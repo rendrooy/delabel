@@ -14,6 +14,7 @@ abstract class Routes {
   static const LIST_MEMBER_SCREEN = _Paths.LIST_MEMBER_SCREEN;
   static const LIST_FAMILY_SCREEN = _Paths.LIST_FAMILY_SCREEN;
   static const FINANCE_REPORT_SCREEN = _Paths.FINANCE_REPORT_SCREEN;
+  static const LIST_VEHICLE_SCREEN = _Paths.LIST_VEHICLE_SCREEN;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const LIST_MEMBER_SCREEN = '/list-member-screen';
   static const LIST_FAMILY_SCREEN = '/list-family-screen';
   static const FINANCE_REPORT_SCREEN = '/finance-report-screen';
+  static const LIST_VEHICLE_SCREEN = '/list-vehicle-screen';
 }

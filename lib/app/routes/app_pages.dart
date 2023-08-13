@@ -10,6 +10,8 @@ import '../modules/ListFamilyScreen/bindings/list_family_screen_binding.dart';
 import '../modules/ListFamilyScreen/views/list_family_screen_view.dart';
 import '../modules/ListMemberScreen/bindings/list_member_screen_binding.dart';
 import '../modules/ListMemberScreen/views/list_member_screen_view.dart';
+import '../modules/ListVehicleScreen/bindings/list_vehicle_screen_binding.dart';
+import '../modules/ListVehicleScreen/views/list_vehicle_screen_view.dart';
 import '../modules/LoginScreen/bindings/login_screen_binding.dart';
 import '../modules/LoginScreen/views/login_screen_view.dart';
 import '../modules/MainScreen/bindings/main_screen_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.FINANCE_REPORT_SCREEN,
       page: () => const FinanceReportScreenView(),
       binding: FinanceReportScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_VEHICLE_SCREEN,
+      page: () => const ListVehicleScreenView(),
+      binding: ListVehicleScreenBinding(),
     ),
   ];
 }
