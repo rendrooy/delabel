@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905156797676",
+    "project_id": "delabel-net-1",
+    "storage_bucket": "delabel-net-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905156797676:android:d9d6b956b69bafd55eb1c9",
+        "android_client_info": {
+          "package_name": "com.example.delabel_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905156797676-ba37mqap4s9hssdgsqgllkuvabqu2u4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw5PnIw_e5rPdK38_SRaMPqlj5kGMSrmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905156797676-ba37mqap4s9hssdgsqgllkuvabqu2u4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

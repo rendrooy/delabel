@@ -1,0 +1,54 @@
+name: delabel_v3
+version: 0.1.0
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  get: 4.6.5
+  firebase_core: ^2.15.0
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.7.2
+  cloud_firestore: ^4.8.4
+
+  form_builder_validators:
+  bottom_navy_bar: ^6.0.0
+  expandable:
+  crypto:
+  uuid:
+  flutter_form_builder:
+  intl:
+  flutter_spinkit:
+  responsive_table:
+  get_storage:
+  getwidget:
+  google_fonts:
+  flutter_svg:
+  fl_chart:
+  provider:
+  data_table_2:
+  carousel_slider:
+  flutter_staggered_grid_view: ^0.6.2
+
+  cached_network_image:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+dependency_overrides:
+  intl: ^0.17.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/icons/03_Phone/
+    - assets/icons/communication/
+    - assets/icons/07_Arrow/
+    - assets/icons/23_Statistics/
