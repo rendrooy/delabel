@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/FamilyInfoScreen/bindings/family_info_screen_binding.dart';
 import '../modules/FamilyInfoScreen/views/family_info_screen_view.dart';
+import '../modules/FinanceReportScreen/bindings/finance_report_screen_binding.dart';
+import '../modules/FinanceReportScreen/views/finance_report_screen_view.dart';
 import '../modules/HomeScreen/bindings/home_screen_binding.dart';
 import '../modules/HomeScreen/views/home_screen_view.dart';
 import '../modules/ListFamilyScreen/bindings/list_family_screen_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.LIST_FAMILY_SCREEN,
       page: () => const ListFamilyScreenView(),
       binding: ListFamilyScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.FINANCE_REPORT_SCREEN,
+      page: () => const FinanceReportScreenView(),
+      binding: FinanceReportScreenBinding(),
     ),
   ];
 }
