@@ -5,7 +5,7 @@ import '../config/constants.dart';
 class PrimaryButton extends StatelessWidget {
   final Color? color;
   final VoidCallback? onPress;
-  final double? fontSize;
+  final double? height;
   final FontWeight? fontWeight;
   final Widget text;
   final IconData? icon;
@@ -13,7 +13,7 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
     this.color,
-    this.fontSize,
+    this.height,
     this.fontWeight,
     required this.text,
     this.icon,
@@ -24,6 +24,7 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPress,
+      height: height,
       minWidth: double.infinity,
       disabledColor: kInactiveColor,
       color: color ?? primaryColor,

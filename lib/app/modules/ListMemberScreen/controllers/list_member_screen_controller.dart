@@ -1,22 +1,24 @@
+import 'package:delabel_v3/app/models/member_model.dart';
+import 'package:delabel_v3/app/services/member_service.dart';
 import 'package:get/get.dart';
 
-class ListMemberScreenController extends GetxController {
+class ListMemberScreenController extends GetxController with StateMixin {
   //TODO: Implement ListMemberScreenController
 
   final count = 0.obs;
+  var listMember = <MemberModel>[].obs;
+  var title = 'List Member'.obs;
+
   @override
   void onInit() {
     super.onInit();
+    getListMember();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+  Future<void> getListMember() async {
+    var res = await MemberService().getAllData();
+    listMember.value = res.map((e) => MemberModel.fromJson(e)).toList();
+    // logKey({"asdasd": res});
   }
 
   void increment() => count.value++;

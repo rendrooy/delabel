@@ -8,6 +8,11 @@ const kSecondaryColor = Color(0xFF979797);
 const kFontColor = Color(0xFFfafafa);
 const kBgWhite = Color(0xFFfafafa);
 
+const String kDateFormatDetail = "EEEE, dd MMMM - HH:mm";
+const String kDateFormatDateDetail = "EEEE, dd MMMM yyyy";
+const String kDateFormatDateOnly = "dd-MM-yyyy";
+const String kDateFormatTimeOnly = "HH:mm";
+
 const kDefaultPadding = 16.0;
 
 const String kUserData = "userData";

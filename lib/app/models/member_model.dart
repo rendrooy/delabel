@@ -1,16 +1,18 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import '../util/func_util.dart';
+
 class MemberModel {
   MemberModel({
     required this.id,
     required this.data,
   });
   late final String id;
-  late final Data data;
+  late final DataMemberModel data;
 
   MemberModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? "";
-    data = Data.fromJson(json['data']);
+    data = DataMemberModel.fromJson(json['data']);
   }
 
   Map<String, dynamic> toJson() {
@@ -21,8 +23,8 @@ class MemberModel {
   }
 }
 
-class Data {
-  Data({
+class DataMemberModel {
+  DataMemberModel({
     required this.profession,
     required this.address,
     required this.education,
@@ -51,11 +53,14 @@ class Data {
   late final String phoneNumber;
   late final String noKk;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  DataMemberModel.fromJson(Map<String, dynamic> json) {
     profession = json['profession'] ?? "";
     address = json['address'] ?? "";
     education = json['education'] ?? "";
-    birthDate = json['birth_date'] ?? "";
+    birthDate = dateFormater(
+      json['birth_date'],
+      dateFormat: "yyyy-MM-dd hh:mm:ss",
+    );
     sex = json['sex'] ?? "";
     relation = json['relation'] ?? "";
     religion = json['religion'] ?? "";

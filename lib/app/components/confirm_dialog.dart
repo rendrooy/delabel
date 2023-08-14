@@ -49,7 +49,7 @@ class ConfirmDialog extends StatelessWidget {
                   child: PrimaryButton(
                     text: DefText("Confirm").normal,
                     onPress: onConfrim,
-                    fontSize: 10,
+                    // fontSize: 10,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -57,7 +57,7 @@ class ConfirmDialog extends StatelessWidget {
                   child: PrimaryButton(
                       text: DefText("Cancel").normal,
                       //  "Cancel",
-                      fontSize: 10,
+                      // fontSize: 10,
                       onPress: () {
                         Get.back();
                       }),

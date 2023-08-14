@@ -41,15 +41,22 @@ void catchError({nameFunc, msg}) {
 
 String dateFormater(
   dynamic date, {
-  String dateFormat = "EEEE, dd MMMM - HH:mm",
+  String dateFormat = kDateFormatDateDetail,
 }) {
-  if (date is String) {
-    return DateFormat().format(DateTime.parse(date));
+  String res = "-";
+  try {
+    if (date is String) {
+      res = DateFormat(dateFormat).format(DateTime.parse(date));
+      logKey(date);
+    }
+    if (date is DateTime) {
+      res = DateFormat(dateFormat).format(date);
+    }
+    return res;
+  } catch (e) {
+    // res = "-";
+    return res;
   }
-  if (date is DateTime) {
-    return DateFormat().format(date);
-  }
-  return '';
 }
 
 // void showToast({required msg}) {
