@@ -29,34 +29,49 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                 child: ListView(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   children: [
-                    const InputBuilderText(
+                    InputBuilderText(
                       name: 'name',
                       label: 'Name',
+                      initialValue: controller.memberModel.value?.data.name,
                     ),
                     const SizedBox(height: kDefaultPadding),
-                    const InputBuilderText(
+                    InputBuilderText(
                       name: 'nik',
                       label: 'NIK',
+                      readOnly: controller.memberModel.value != null,
+                      initialValue: controller.memberModel.value?.data.nik,
                     ),
                     const SizedBox(height: kDefaultPadding),
-                    const InputBuilderText(
+                    InputBuilderText(
                       name: 'phone',
                       label: 'No HP',
+                      initialValue:
+                          controller.memberModel.value?.data.phoneNumber,
                     ),
                     const SizedBox(height: kDefaultPadding),
-                    const InputBuilderText(
+                    InputBuilderText(
                       name: 'profession',
                       label: 'Pekerjaan',
+                      initialValue:
+                          controller.memberModel.value?.data.profession,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     const InputBuilderText(
                       name: 'birth_place',
                       label: 'Tempat Lahir',
+                      // initialValue: controller.memberModel.value?.,data.
                     ),
                     const SizedBox(height: kDefaultPadding),
                     FormBuilderDateTimePicker(
                       validator: FormBuilderValidators.required(),
                       name: "birth_date",
+                      initialValue: controller.memberModel.value == null
+                          ? null
+                          : DateTime.parse(
+                              controller.memberModel.value!.data.birthDate),
+                      // DateTime.parse(
+                      //   controller.memberModel.value?.data.birthDate ?? '',
+                      // ),
                       inputType: InputType.date,
                       decoration: const InputDecoration(
                         labelText: 'Tanggal Lahir',
@@ -65,9 +80,10 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                       format: DateFormat("yyyy-MM-dd"),
                     ),
                     const SizedBox(height: kDefaultPadding),
-                    const InputBuilderText(
+                    InputBuilderText(
                       name: 'address',
                       label: 'Alamat',
+                      initialValue: controller.memberModel.value?.data.address,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     FormBuilderDropdown(
@@ -76,6 +92,7 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                         labelText: 'Agama',
                       ),
                       name: "religion",
+                      initialValue: controller.memberModel.value?.data.religion,
                       items: controller.listReligion
                           .map(
                             (element) => DropdownMenuItem(
@@ -87,6 +104,7 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                     ),
                     const SizedBox(height: kDefaultPadding),
                     FormBuilderDropdown(
+                      initialValue: controller.memberModel.value?.data.sex,
                       validator: FormBuilderValidators.required(),
                       decoration: const InputDecoration(
                         labelText: 'Jenis Kelamin',
@@ -115,7 +133,12 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                   fontWeight: FontWeight.bold,
                 ).normal,
                 onPress: () {
-                  controller.submitMember();
+                  if (controller.memberModel.value == null) {
+                    controller.submitMember();
+                  } else {
+                    controller.updateMember();
+                  }
+                  // controller.submitMember();
                 },
               ),
             ),

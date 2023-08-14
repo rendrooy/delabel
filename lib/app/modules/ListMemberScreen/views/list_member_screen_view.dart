@@ -1,3 +1,4 @@
+import 'package:delabel_v3/app/components/confirm_dialog.dart';
 import 'package:delabel_v3/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -100,12 +101,26 @@ class ListMemberScreenView extends GetView<ListMemberScreenController> {
                               Row(
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      controller.updateMember(
+                                        controller.listMember.value[index],
+                                      );
+                                    },
                                     splashRadius: 20,
                                     icon: const Icon(Icons.edit),
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.dialog(
+                                        ConfirmDialog(
+                                          title:
+                                              "Yakin Menghapus ${controller.listMember.value[index].data.name}",
+                                          onConfrim: () {
+                                            Get.back();
+                                          },
+                                        ),
+                                      );
+                                    },
                                     splashRadius: 20,
                                     icon: const Icon(Icons.delete),
                                   ),

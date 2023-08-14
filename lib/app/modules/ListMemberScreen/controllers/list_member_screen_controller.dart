@@ -1,4 +1,5 @@
 import 'package:delabel_v3/app/models/member_model.dart';
+import 'package:delabel_v3/app/routes/app_pages.dart';
 import 'package:delabel_v3/app/services/member_service.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +13,14 @@ class ListMemberScreenController extends GetxController with StateMixin {
   @override
   void onInit() {
     super.onInit();
+    getListMember();
+  }
+
+  void updateMember(MemberModel memberModel) async {
+    await Get.toNamed(
+      Routes.FORM_MEMBER_SCREEN,
+      arguments: memberModel,
+    );
     getListMember();
   }
 

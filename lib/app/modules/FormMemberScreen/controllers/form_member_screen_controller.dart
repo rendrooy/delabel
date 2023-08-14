@@ -9,17 +9,42 @@ import '../../../services/member_service.dart';
 class FormMemberScreenController extends GetxController {
   final count = 0.obs;
   GlobalKey<FormBuilderState> formMember = GlobalKey<FormBuilderState>();
-  final dataMemberModel = Rxn<DataMemberModel>();
+  final memberModel = Rxn<MemberModel>();
+  var listStatus = ['Menikah', 'Belum Menikah'].obs;
+  final listEducation = ['SD', 'SMP', 'SMA', 'D3', 'S1', 'S2', 'S3'].obs;
+  final listReligion = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha'].obs;
+  final listSex = ['Laki Laki', 'Perempuan'].obs;
 
-  var listReligion = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha'].obs;
-  var listSex = ['Laki Laki', 'Perempuan'].obs;
+  @override
+  void onInit() {
+    memberModel.value = Get.arguments;
+
+    super.onInit();
+  }
+
+  void updateMember() async {
+    final dataMemberModel = Rxn<DataMemberModel>();
+    if (!formMember.currentState!.saveAndValidate()) return;
+    dialogLoading();
+    Map<String, dynamic> dataRaw = Map.from(formMember.currentState!.value);
+
+    dataRaw.remove('nik');
+    Navigator.of(Get.overlayContext!).pop();
+    dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
+    MemberService().updateData(
+      id: memberModel.value!.id,
+      data: memberModel.value!.data.toJson(),
+    );
+    Get.back();
+    showSnackbar(pesan: "Member Updated");
+  }
 
   void submitMember() async {
+    final dataMemberModel = Rxn<DataMemberModel>();
     if (!formMember.currentState!.saveAndValidate()) return;
 
     dialogLoading();
-    // logKey(dataMemberModel.value!.toJson());
-    // return;
+
     var dataRaw = formMember.currentState!.value;
     List listMember = await MemberService()
         .getRelatedFamily(value: dataRaw['nik'], field: 'nik');
@@ -34,7 +59,6 @@ class FormMemberScreenController extends GetxController {
       Get.back();
       showSnackbar(pesan: "Member Added");
     }
-    // logKey({"asdasd": listMember});
   }
 
   void increment() => count.value++;
