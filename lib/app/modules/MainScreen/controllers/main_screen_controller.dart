@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../config/constants.dart';
 import '../../HomeScreen/views/home_screen_view.dart';
 import '../../ProfileScreen/views/profile_screen_view.dart';
 
@@ -38,7 +39,7 @@ class MainScreenController extends GetxController
       vsync: this,
       initialIndex: 0,
     );
-    // userModel.value = UserModel.fromJson(box.read(kUserData));
+    userModel.value = UserModel.fromJson(box.read(kUserData));
     // TODO: implement onInit
     super.onInit();
   }

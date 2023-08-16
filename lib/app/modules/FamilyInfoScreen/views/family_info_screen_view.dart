@@ -37,7 +37,7 @@ class FamilyInfoScreenView extends GetView<FamilyInfoScreenController> {
                       const SizedBox(height: kDefaultPadding / 2),
                       itemRow(
                         field: "Alamat",
-                        value: controller.familyModel.value!.data.addressKk,
+                        value: controller.familyModel.value!.data.address,
                       ),
                       const SizedBox(height: kDefaultPadding / 2),
                       itemRow(

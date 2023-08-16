@@ -40,9 +40,8 @@ class FormMemberScreenController extends GetxController {
   }
 
   void submitMember() async {
-    final dataMemberModel = Rxn<DataMemberModel>();
+    // final dataMemberModel = Rxn<DataMemberModel>();
     if (!formMember.currentState!.saveAndValidate()) return;
-
     dialogLoading();
 
     var dataRaw = formMember.currentState!.value;
@@ -53,9 +52,9 @@ class FormMemberScreenController extends GetxController {
       showSnackbar(pesan: "NIK sudah terdaftar");
       return;
     } else {
+      // dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
+      MemberService().insertData(value: dataRaw);
       Navigator.of(Get.overlayContext!).pop();
-      dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
-      MemberService().insertData(value: dataMemberModel.toJson());
       Get.back();
       showSnackbar(pesan: "Member Added");
     }

@@ -4,15 +4,16 @@ import 'package:get_storage/get_storage.dart';
 
 import '../components/defText.dart';
 import '../config/constants.dart';
+import '../models/user_model.dart';
 import '../routes/app_pages.dart';
 
 class SideMenu extends StatelessWidget {
-  final Map? dataUser;
+  final UserModel dataUser;
   final String? version;
 
   const SideMenu({
     Key? key,
-    this.dataUser,
+    required this.dataUser,
     this.version,
   }) : super(key: key);
 
@@ -55,58 +56,61 @@ class SideMenu extends StatelessWidget {
                       Get.toNamed(Routes.FAMILY_INFO_SCREEN);
                     },
                   ),
-                  ExpansionTile(
-                    title: const Text(
-                      "Admin",
-                      style: TextStyle(color: Colors.white54),
+                  Visibility(
+                    visible: dataUser.data.isAdmin,
+                    child: ExpansionTile(
+                      title: const Text(
+                        "Admin",
+                        style: TextStyle(color: Colors.white54),
+                      ),
+                      leading: const Icon(
+                        Icons.lock_open_rounded,
+                      ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: DrawerListTile(
+                            title: "List Family",
+                            icon: Icons.people_alt_rounded,
+                            press: () {
+                              Get.back();
+                              Get.toNamed(Routes.LIST_FAMILY_SCREEN);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: DrawerListTile(
+                            title: "List Member",
+                            icon: Icons.people_alt_rounded,
+                            press: () {
+                              Get.back();
+                              Get.toNamed(Routes.LIST_MEMBER_SCREEN);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: DrawerListTile(
+                            title: "List Vehicle",
+                            icon: Icons.people_alt_rounded,
+                            press: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: DrawerListTile(
+                            title: "Organisasi External",
+                            icon: Icons.people_alt_rounded,
+                            press: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    leading: const Icon(
-                      Icons.lock_open_rounded,
-                    ),
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: DrawerListTile(
-                          title: "List Family",
-                          icon: Icons.people_alt_rounded,
-                          press: () {
-                            Get.back();
-                            Get.toNamed(Routes.LIST_FAMILY_SCREEN);
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: DrawerListTile(
-                          title: "List Member",
-                          icon: Icons.people_alt_rounded,
-                          press: () {
-                            Get.back();
-                            Get.toNamed(Routes.LIST_MEMBER_SCREEN);
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: DrawerListTile(
-                          title: "List Vehicle",
-                          icon: Icons.people_alt_rounded,
-                          press: () {
-                            Get.back();
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: DrawerListTile(
-                          title: "Organisasi External",
-                          icon: Icons.people_alt_rounded,
-                          press: () {
-                            Get.back();
-                          },
-                        ),
-                      ),
-                    ],
                   ),
                   DrawerListTile(
                     title: "Keluar",

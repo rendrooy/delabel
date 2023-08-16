@@ -63,7 +63,11 @@ class LoginScreenController extends GetxController {
       field: "id",
     );
     memberModel.value = MemberModel.fromJson(resMember);
-    box.write(kUserData, {userModel.value!.toJson()});
+    box.write(kUserData, userModel.value!.toJson());
+    logKey("resUser", box.read(kUserData));
+    // logKey("resMember", memberModel.value!.toJson());
+    // return;
+    // box.write(kMemberData, {memberModel.value!.toJson()});
     Get.offAllNamed(Routes.MAIN_SCREEN);
   }
 

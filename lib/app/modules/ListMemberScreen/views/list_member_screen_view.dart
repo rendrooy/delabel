@@ -92,8 +92,8 @@ class ListMemberScreenView extends GetView<ListMemberScreenController> {
                                   .normal,
                             ),
                             DataCell(
-                              DefText(controller
-                                      .listMember.value[index].data.relation)
+                              DefText(controller.listMember.value[index].data
+                                      .familyRelation)
                                   .normal,
                             ),
                             DataCell(

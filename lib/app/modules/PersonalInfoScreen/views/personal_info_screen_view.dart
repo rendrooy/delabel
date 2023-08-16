@@ -47,37 +47,37 @@ class PersonalInfoScreenView extends GetView<PersonalInfoScreenController> {
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Name",
-                      value: controller.memberModel.value!.data.name,
+                      value: controller.memberModel.value?.data.name,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "NIK",
-                      value: controller.memberModel.value!.data.nik,
+                      value: controller.memberModel.value?.data.nik,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Alamat",
-                      value: controller.memberModel.value!.data.address,
+                      value: controller.memberModel.value?.data.address,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "No HP",
-                      value: controller.memberModel.value!.data.phoneNumber,
+                      value: controller.memberModel.value?.data.phoneNumber,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Jenis Kelamin",
-                      value: controller.memberModel.value!.data.sex,
+                      value: controller.memberModel.value?.data.sex,
                     ),
-                    const SizedBox(height: kDefaultPadding),
+                    // const SizedBox(height: kDefaultPadding),
                     // itemRow(
                     //   field: "Pendidikan",
-                    //   value: controller.memberModel.value!.data.education,
+                    //   value: controller.memberModel.value?.data.education,
                     // ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Pekerjaan",
-                      value: controller.memberModel.value!.data.profession,
+                      value: controller.memberModel.value?.data.profession,
                     ),
                   ],
                 ),
@@ -110,23 +110,23 @@ class PersonalInfoScreenView extends GetView<PersonalInfoScreenController> {
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Name",
-                      value: controller.organizationModel.value!.data.nameOrg,
+                      value: controller.organizationModel.value?.data.nameOrg,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "NIK",
-                      value: controller.organizationModel.value!.data.position,
+                      value: controller.organizationModel.value?.data.position,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Alamat",
-                      value: controller.organizationModel.value!.data.typeOrg,
+                      value: controller.organizationModel.value?.data.typeOrg,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "No HP",
                       value:
-                          controller.organizationModel.value!.data.phoneNumber,
+                          controller.organizationModel.value?.data.phoneNumber,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     Row(
@@ -139,7 +139,7 @@ class PersonalInfoScreenView extends GetView<PersonalInfoScreenController> {
                         Expanded(
                           flex: 2,
                           child: DefText(
-                                  ": ${controller.organizationModel.value!.data.period[0]} - ${controller.organizationModel.value!.data.period[1]}")
+                                  ": ${controller.organizationModel.value?.data.period[0]} - ${controller.organizationModel.value?.data.period[1]}")
                               .normal,
                         ),
                       ],
@@ -167,7 +167,7 @@ class PersonalInfoScreenView extends GetView<PersonalInfoScreenController> {
         const SizedBox(width: kDefaultPadding),
         Expanded(
           flex: 2,
-          child: DefText(": " + value, maxLine: 3).normal,
+          child: DefText(": $value", maxLine: 3).normal,
         ),
       ],
     );

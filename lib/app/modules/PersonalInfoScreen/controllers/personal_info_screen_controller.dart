@@ -7,7 +7,6 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../models/organization_model.dart';
 import '../../../models/user_model.dart';
-import '../../../services/organization_service.dart';
 
 class PersonalInfoScreenController extends GetxController with StateMixin {
   final count = 0.obs;
@@ -20,8 +19,9 @@ class PersonalInfoScreenController extends GetxController with StateMixin {
   @override
   void onInit() async {
     box.initStorage;
+    logKey("user data", box.read(kUserData));
     userModel.value = UserModel.fromJson(box.read(kUserData));
-
+    // return;
     await getMember();
     await getOrganization();
     change(null, status: RxStatus.success());
@@ -30,20 +30,20 @@ class PersonalInfoScreenController extends GetxController with StateMixin {
 
   Future<void> getMember() async {
     var data = await MemberService().getOne(
-      field: "nik",
-      value: userModel.value!.data.id,
+      field: "id",
+      value: userModel.value!.data.memberId,
     );
     memberModel.value = MemberModel.fromJson(data);
-    logKey("dari db", data);
+    logKey("dari db", memberModel.value!.toJson());
   }
 
   Future<void> getOrganization() async {
-    var res = await OrganizationService().getOne(
-      field: "nik",
-      value: userModel.value!.data.id,
-    );
-    organizationModel.value = OrganizationModel.fromJson(res);
-    logKey(res);
+    // var res = await OrganizationService().getOne(
+    //   field: "nik",
+    //   value: userModel.value!.data.id,
+    // );
+    // organizationModel.value = OrganizationModel.fromJson(res);
+    // logKey(res);
   }
 
   void increment() => count.value++;

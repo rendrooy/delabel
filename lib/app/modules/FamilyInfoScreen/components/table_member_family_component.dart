@@ -78,8 +78,8 @@ class TableMemberFamilyComponent extends GetView<FamilyInfoScreenController> {
                           .normal,
                     ),
                     DataCell(
-                      DefText(controller
-                              .listMemberFamily.value[index].data.relation)
+                      DefText(controller.listMemberFamily.value[index].data
+                              .familyRelation)
                           .normal,
                     ),
                     DataCell(

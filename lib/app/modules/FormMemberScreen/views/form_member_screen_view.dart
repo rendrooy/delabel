@@ -40,14 +40,21 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                       label: 'NIK',
                       isNumber: true,
                       readOnly: controller.memberModel.value != null,
-                      initialValue: "${controller.memberModel.value?.data.nik}",
+                      initialValue:
+                          "${controller.memberModel.value?.data.nik ?? ""}",
                     ),
                     const SizedBox(height: kDefaultPadding),
                     InputBuilderText(
-                      name: 'phone',
+                      name: 'phone_number',
                       label: 'No HP',
                       initialValue:
-                          "${controller.memberModel.value?.data.phoneNumber}",
+                          "${controller.memberModel.value?.data.phoneNumber ?? ""}",
+                    ),
+                    const SizedBox(height: kDefaultPadding),
+                    InputBuilderText(
+                      name: 'address',
+                      label: 'Alamat',
+                      initialValue: controller.memberModel.value?.data.address,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     InputBuilderText(
@@ -60,7 +67,6 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                     const InputBuilderText(
                       name: 'birth_place',
                       label: 'Tempat Lahir',
-                      // initialValue: controller.memberModel.value?.,data.
                     ),
                     const SizedBox(height: kDefaultPadding),
                     FormBuilderDateTimePicker(
@@ -68,26 +74,13 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                       name: "birth_date",
                       initialValue: controller.memberModel.value == null
                           ? null
-                          :
-                          // DateTime.parse(
-                          controller.memberModel.value!.data.birthDate
-                      // )
-                      ,
-                      // DateTime.parse(
-                      //   controller.memberModel.value?.data.birthDate ?? '',
-                      // ),
+                          : controller.memberModel.value!.data.birthDate,
                       inputType: InputType.date,
                       decoration: const InputDecoration(
                         labelText: 'Tanggal Lahir',
                       ),
                       initialDate: DateTime.now(),
                       format: DateFormat("yyyy-MM-dd"),
-                    ),
-                    const SizedBox(height: kDefaultPadding),
-                    InputBuilderText(
-                      name: 'address',
-                      label: 'Alamat',
-                      initialValue: controller.memberModel.value?.data.address,
                     ),
                     const SizedBox(height: kDefaultPadding),
                     FormBuilderDropdown(
@@ -142,7 +135,6 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                   } else {
                     controller.updateMember();
                   }
-                  // controller.submitMember();
                 },
               ),
             ),

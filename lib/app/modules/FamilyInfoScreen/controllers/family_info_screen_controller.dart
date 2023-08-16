@@ -28,22 +28,22 @@ class FamilyInfoScreenController extends GetxController with StateMixin {
     userModel.value = UserModel.fromJson(box.read(kUserData));
     await getPersonalInfo();
     await getFamilyInfo();
-    getMemberFamily();
-    getVehicleFamily();
+    // getMemberFamily();
+    // getVehicleFamily();
 
     super.onInit();
   }
 
   Future<void> getPersonalInfo() async {
     var res = await MemberService()
-        .getOne(value: userModel.value!.data.id, field: "nik");
+        .getOne(value: userModel.value!.data.memberId, field: "id");
     memberModel.value = MemberModel.fromJson(res);
   }
 
   Future<void> getFamilyInfo() async {
     var data = await FamilyService()
-        .getOne(value: memberModel.value!.data.noKk, field: "no_kk");
-    logKey("getFamilyInfo", data);
+        .getOne(value: memberModel.value!.data.familyId, field: "id");
+    logKey(data);
     familyModel.value = FamilyModel.fromJson(data);
     change(null, status: RxStatus.success());
   }

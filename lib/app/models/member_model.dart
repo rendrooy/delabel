@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+// var uuid = Uuid();
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:uuid/uuid.dart';
 
 class MemberModel {
   String id;
@@ -32,12 +35,12 @@ class DataMemberModel {
   String bloodType;
   DateTime birthDate;
   String sex;
-  String familyUuid;
+  String familyId;
   String name;
   int phoneNumber;
   String id;
   String religion;
-  String relation;
+  // String relation;
 
   DataMemberModel({
     required this.familyRelation,
@@ -48,32 +51,36 @@ class DataMemberModel {
     required this.bloodType,
     required this.birthDate,
     required this.sex,
-    required this.familyUuid,
+    required this.familyId,
     required this.name,
     required this.phoneNumber,
     required this.id,
     required this.religion,
-    required this.relation,
+    // required this.relation,
   });
 
   factory DataMemberModel.fromJson(Map<String, dynamic> json) {
     return DataMemberModel(
-      familyRelation: json['family_relation'],
+      familyRelation: json['family_relation'] ?? "",
       profession: json['profession'],
-      nik: json['nik'],
+      nik: json['nik'] is String ? int.parse(json['nik']) : json['nik'],
       noKk: json['no_kk'] ?? "",
-      address: json['address'],
-      bloodType: json['blood_type'],
-      birthDate: DateTime.fromMillisecondsSinceEpoch(
-          (json['birth_date'] as Timestamp).seconds * 1000 +
-              (json['birth_date'] as Timestamp).nanoseconds ~/ 1000000),
+      address: json['address'] ?? "",
+      bloodType: json['blood_type'] ?? "",
+      birthDate: json['birth_date'] is DateTime
+          ? json['birth_date']
+          : DateTime.fromMillisecondsSinceEpoch(
+              (json['birth_date'] as Timestamp).seconds * 1000 +
+                  (json['birth_date'] as Timestamp).nanoseconds ~/ 1000000),
       sex: json['sex'],
-      familyUuid: json['family_uuid'],
+      familyId: json['family_id'] ?? "",
       name: json['name'],
-      phoneNumber: json['phone_number'],
-      id: json['id'],
+      phoneNumber: json['phone_number'] is String
+          ? int.parse(json['phone_number'])
+          : json['phone_number'],
+      id: json['id'] ?? const Uuid().v4(),
       religion: json['religion'],
-      relation: json['relation'] ?? "",
+      // relation: json['relation'] ?? "",
     );
   }
 
@@ -88,7 +95,7 @@ class DataMemberModel {
           .toUtc()
           .toIso8601String(), // Konversi ke UTC DateTime dan format ISO 8601
       'sex': sex,
-      'family_uuid': familyUuid,
+      'family_id': familyId,
       'name': name,
       'phone_number': phoneNumber,
       'id': id,

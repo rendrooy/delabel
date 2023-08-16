@@ -1,12 +1,18 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:delabel_v3/app/config/constants.dart';
 import 'package:delabel_v3/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../models/user_model.dart';
 
 class HomeScreenController extends GetxController {
   //TODO: Implement HomeScreenController
   final CarouselController controllerCarousel = CarouselController();
   var title = "HomeScreenView".obs;
+  final box = GetStorage();
+
   List imagesCarousel = [
     'https://images.unsplash.com/photo-1646299220293-3ae516d9c275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2638&q=80',
     'https://images.unsplash.com/photo-1646299220293-3ae516d9c275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2638&q=80',
@@ -14,6 +20,8 @@ class HomeScreenController extends GetxController {
     'https://images.unsplash.com/photo-1646299220293-3ae516d9c275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2638&q=80',
     'https://images.unsplash.com/photo-1646299220293-3ae516d9c275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2638&q=80',
   ];
+
+  final userModel = Rxn<UserModel>();
 
   List menu = [
     {
@@ -35,6 +43,14 @@ class HomeScreenController extends GetxController {
       "title": "UMKM",
     },
   ];
+
+  @override
+  void onInit() {
+    box.initStorage;
+    userModel.value = UserModel.fromJson(box.read(kUserData));
+    // TODO: implement onInit
+    super.onInit();
+  }
 
   final count = 0.obs;
 

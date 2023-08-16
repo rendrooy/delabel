@@ -4,7 +4,7 @@ import '../util/func_util.dart';
 
 class FamilyService {
   CollectionReference family =
-      FirebaseFirestore.instance.collection('family_card');
+      FirebaseFirestore.instance.collection('families');
 
   Future<void> insertData({required Map<String, dynamic> value}) {
     return family
