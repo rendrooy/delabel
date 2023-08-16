@@ -27,20 +27,18 @@ class FormMemberScreenController extends GetxController {
     if (!formMember.currentState!.saveAndValidate()) return;
     dialogLoading();
     Map<String, dynamic> dataRaw = Map.from(formMember.currentState!.value);
-
-    dataRaw.remove('nik');
-    Navigator.of(Get.overlayContext!).pop();
     dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
-    MemberService().updateData(
+    await MemberService().updateData(
       id: memberModel.value!.id,
-      data: memberModel.value!.data.toJson(),
+      data: dataMemberModel.value?.toJson(),
     );
+    Navigator.of(Get.overlayContext!).pop();
     Get.back();
     showSnackbar(pesan: "Member Updated");
   }
 
   void submitMember() async {
-    // final dataMemberModel = Rxn<DataMemberModel>();
+    final dataMemberModel = Rxn<DataMemberModel>();
     if (!formMember.currentState!.saveAndValidate()) return;
     dialogLoading();
 
@@ -52,8 +50,10 @@ class FormMemberScreenController extends GetxController {
       showSnackbar(pesan: "NIK sudah terdaftar");
       return;
     } else {
-      // dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
-      MemberService().insertData(value: dataRaw);
+      dataMemberModel.value = DataMemberModel.fromJson(dataRaw);
+      MemberService().insertData(
+        value: dataMemberModel.value!.toJson(),
+      );
       Navigator.of(Get.overlayContext!).pop();
       Get.back();
       showSnackbar(pesan: "Member Added");

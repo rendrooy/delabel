@@ -115,6 +115,10 @@ class ListMemberScreenView extends GetView<ListMemberScreenController> {
                                           title:
                                               "Yakin Menghapus ${controller.listMember.value[index].data.name}",
                                           onConfrim: () {
+                                            controller.deleteMember(
+                                              controller
+                                                  .listMember.value[index].id,
+                                            );
                                             Get.back();
                                           },
                                         ),

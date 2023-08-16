@@ -24,6 +24,11 @@ class ListMemberScreenController extends GetxController with StateMixin {
     getListMember();
   }
 
+  void deleteMember(data) async {
+    await MemberService().deleteData(id: data);
+    getListMember();
+  }
+
   Future<void> getListMember() async {
     var res = await MemberService().getAllData();
     listMember.value = res.map((e) => MemberModel.fromJson(e)).toList();

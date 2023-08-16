@@ -91,6 +91,23 @@ class DataMemberModel {
       'nik': nik,
       'address': address,
       'blood_type': bloodType,
+      'birth_date': birthDate,
+      'sex': sex,
+      'family_id': familyId,
+      'name': name,
+      'phone_number': phoneNumber,
+      'id': id,
+      'religion': religion,
+    };
+  }
+
+  Map<String, dynamic> toJsonPrint() {
+    return {
+      'family_relation': familyRelation,
+      'profession': profession,
+      'nik': nik,
+      'address': address,
+      'blood_type': bloodType,
       'birth_date': birthDate
           .toUtc()
           .toIso8601String(), // Konversi ke UTC DateTime dan format ISO 8601
