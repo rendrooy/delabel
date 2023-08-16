@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../components/defText.dart';
 import '../../../config/constants.dart';
+import '../../../util/func_util.dart';
 import '../controllers/family_info_screen_controller.dart';
 
 class TableMemberFamilyComponent extends GetView<FamilyInfoScreenController> {
@@ -56,7 +57,7 @@ class TableMemberFamilyComponent extends GetView<FamilyInfoScreenController> {
                   controller.listMemberFamily.value.length,
                   (index) => DataRow(cells: [
                     DataCell(
-                      DefText(controller.listMemberFamily.value[index].data.nik)
+                      DefText("${controller.listMemberFamily.value[index].data.nik}")
                           .normal,
                     ),
                     DataCell(
@@ -66,14 +67,14 @@ class TableMemberFamilyComponent extends GetView<FamilyInfoScreenController> {
                     ),
                     DataCell(
                       DefText(
-                        // dateFormater(
-                        controller.listMemberFamily.value[index].data.birthDate,
-                        // ),
+                        dateFormater(
+                          controller
+                              .listMemberFamily.value[index].data.birthDate,
+                        ),
                       ).normal,
                     ),
                     DataCell(
-                      DefText(controller
-                              .listMemberFamily.value[index].data.phoneNumber)
+                      DefText("${controller.listMemberFamily.value[index].data.phoneNumber}")
                           .normal,
                     ),
                     DataCell(

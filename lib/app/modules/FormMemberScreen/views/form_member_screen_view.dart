@@ -38,15 +38,16 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                     InputBuilderText(
                       name: 'nik',
                       label: 'NIK',
+                      isNumber: true,
                       readOnly: controller.memberModel.value != null,
-                      initialValue: controller.memberModel.value?.data.nik,
+                      initialValue: "${controller.memberModel.value?.data.nik}",
                     ),
                     const SizedBox(height: kDefaultPadding),
                     InputBuilderText(
                       name: 'phone',
                       label: 'No HP',
                       initialValue:
-                          controller.memberModel.value?.data.phoneNumber,
+                          "${controller.memberModel.value?.data.phoneNumber}",
                     ),
                     const SizedBox(height: kDefaultPadding),
                     InputBuilderText(
@@ -67,8 +68,11 @@ class FormMemberScreenView extends GetView<FormMemberScreenController> {
                       name: "birth_date",
                       initialValue: controller.memberModel.value == null
                           ? null
-                          : DateTime.parse(
-                              controller.memberModel.value!.data.birthDate),
+                          :
+                          // DateTime.parse(
+                          controller.memberModel.value!.data.birthDate
+                      // )
+                      ,
                       // DateTime.parse(
                       //   controller.memberModel.value?.data.birthDate ?? '',
                       // ),

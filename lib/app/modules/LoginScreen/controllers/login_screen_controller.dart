@@ -52,17 +52,18 @@ class LoginScreenController extends GetxController {
   }
 
   void findDataUser({dataRaw}) async {
+    // logKey("resUser", {"data": dataRaw});
     var resUser = await UserService().getOne(
       value: dataRaw['email'],
       field: "email",
     );
     userModel.value = UserModel.fromJson(resUser);
     var resMember = await MemberService().getOne(
-      value: userModel.value!.data.nik,
-      field: "nik",
+      value: userModel.value!.data.memberId,
+      field: "id",
     );
     memberModel.value = MemberModel.fromJson(resMember);
-    box.write(kUserData, userModel.value!.toJson());
+    box.write(kUserData, {userModel.value!.toJson()});
     Get.offAllNamed(Routes.MAIN_SCREEN);
   }
 

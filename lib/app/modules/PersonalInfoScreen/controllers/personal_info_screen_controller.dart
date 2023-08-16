@@ -31,7 +31,7 @@ class PersonalInfoScreenController extends GetxController with StateMixin {
   Future<void> getMember() async {
     var data = await MemberService().getOne(
       field: "nik",
-      value: userModel.value!.data.nik,
+      value: userModel.value!.data.id,
     );
     memberModel.value = MemberModel.fromJson(data);
     logKey("dari db", data);
@@ -40,7 +40,7 @@ class PersonalInfoScreenController extends GetxController with StateMixin {
   Future<void> getOrganization() async {
     var res = await OrganizationService().getOne(
       field: "nik",
-      value: userModel.value!.data.nik,
+      value: userModel.value!.data.id,
     );
     organizationModel.value = OrganizationModel.fromJson(res);
     logKey(res);

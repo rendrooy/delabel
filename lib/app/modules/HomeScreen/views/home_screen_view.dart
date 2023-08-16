@@ -131,7 +131,8 @@ class HomeScreenView extends GetView<HomeScreenController> {
           child: MaterialButton(
             shape: const CircleBorder(),
             padding: const EdgeInsets.all(kDefaultPadding / 2),
-            onPressed: () => onClick(),
+            onPressed: () {},
+            // onClick(),
             // height: 25,
             child: Icon(icon),
             // ImageNetwork(

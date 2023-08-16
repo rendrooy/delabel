@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../components/defText.dart';
 import '../../../config/constants.dart';
+import '../../../util/func_util.dart';
 import '../../AppBar/views/app_bar_view.dart';
 import '../controllers/list_member_screen_controller.dart';
 
@@ -70,8 +71,7 @@ class ListMemberScreenView extends GetView<ListMemberScreenController> {
                           controller.listMember.value.length,
                           (index) => DataRow(cells: [
                             DataCell(
-                              DefText(controller
-                                      .listMember.value[index].data.nik)
+                              DefText("${controller.listMember.value[index].data.nik}")
                                   .normal,
                             ),
                             DataCell(
@@ -81,15 +81,14 @@ class ListMemberScreenView extends GetView<ListMemberScreenController> {
                             ),
                             DataCell(
                               DefText(
-                                // dateFormater(
-                                controller
-                                    .listMember.value[index].data.birthDate,
-                                // ),
+                                dateFormater(
+                                  controller
+                                      .listMember.value[index].data.birthDate,
+                                ),
                               ).normal,
                             ),
                             DataCell(
-                              DefText(controller
-                                      .listMember.value[index].data.phoneNumber)
+                              DefText("${controller.listMember.value[index].data.phoneNumber}")
                                   .normal,
                             ),
                             DataCell(

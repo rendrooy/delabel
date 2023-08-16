@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../util/func_util.dart';
 
 class MemberService {
-  CollectionReference members = FirebaseFirestore.instance.collection('member');
+  CollectionReference members =
+      FirebaseFirestore.instance.collection('members');
 
   Future<void> insertData({required Map<String, dynamic> value}) {
     return members
@@ -67,6 +68,7 @@ class MemberService {
           await members.limit(limit).where(field, isEqualTo: value).get();
 
       print("querySnapshot length: ${querySnapshot.docs.length}");
+      print("querySnapshot length: ${members.path}");
 
       for (var doc in querySnapshot.docs) {
         allData.add({

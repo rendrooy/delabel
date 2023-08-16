@@ -1,92 +1,100 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+import 'dart:convert';
 
-import '../util/func_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MemberModel {
-  MemberModel({
-    required this.id,
-    required this.data,
-  });
-  late final String id;
-  late final DataMemberModel data;
+  String id;
+  DataMemberModel data;
 
-  MemberModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? "";
-    data = DataMemberModel.fromJson(json['data']);
+  MemberModel({required this.id, required this.data});
+
+  factory MemberModel.fromJson(Map<String, dynamic> json) {
+    return MemberModel(
+      id: json['id'],
+      data: DataMemberModel.fromJson(json['data']),
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['data'] = data.toJson();
-    return _data;
+    return {
+      'id': id,
+      'data': data.toJson(),
+    };
   }
 }
 
 class DataMemberModel {
+  String familyRelation;
+  String profession;
+  String address;
+  int nik;
+  String noKk;
+  String bloodType;
+  DateTime birthDate;
+  String sex;
+  String familyUuid;
+  String name;
+  int phoneNumber;
+  String id;
+  String religion;
+  String relation;
+
   DataMemberModel({
+    required this.familyRelation,
     required this.profession,
+    required this.nik,
+    required this.noKk,
     required this.address,
-    required this.education,
+    required this.bloodType,
     required this.birthDate,
     required this.sex,
-    required this.relation,
-    required this.religion,
-    required this.nik,
-    required this.surname,
-    required this.organization,
+    required this.familyUuid,
     required this.name,
     required this.phoneNumber,
-    required this.noKk,
+    required this.id,
+    required this.religion,
+    required this.relation,
   });
-  late final String profession;
-  late final String address;
-  late final String education;
-  late final String birthDate;
-  late final String sex;
-  late final String relation;
-  late final String religion;
-  late final String nik;
-  late final String surname;
-  late final bool organization;
-  late final String name;
-  late final String phoneNumber;
-  late final String noKk;
 
-  DataMemberModel.fromJson(Map<String, dynamic> json) {
-    profession = json['profession'] ?? "";
-    address = json['address'] ?? "";
-    education = json['education'] ?? "";
-    birthDate = dateFormater(
-      json['birth_date'],
-      dateFormat: "yyyy-MM-dd hh:mm:ss",
+  factory DataMemberModel.fromJson(Map<String, dynamic> json) {
+    return DataMemberModel(
+      familyRelation: json['family_relation'],
+      profession: json['profession'],
+      nik: json['nik'],
+      noKk: json['no_kk'] ?? "",
+      address: json['address'],
+      bloodType: json['blood_type'],
+      birthDate: DateTime.fromMillisecondsSinceEpoch(
+          (json['birth_date'] as Timestamp).seconds * 1000 +
+              (json['birth_date'] as Timestamp).nanoseconds ~/ 1000000),
+      sex: json['sex'],
+      familyUuid: json['family_uuid'],
+      name: json['name'],
+      phoneNumber: json['phone_number'],
+      id: json['id'],
+      religion: json['religion'],
+      relation: json['relation'] ?? "",
     );
-    sex = json['sex'] ?? "";
-    relation = json['relation'] ?? "";
-    religion = json['religion'] ?? "";
-    nik = json['nik'] ?? "";
-    surname = json['surname'] ?? "";
-    organization = json['organization'] ?? false;
-    name = json['name'] ?? "";
-    phoneNumber = json['phone_number'] ?? "";
-    noKk = json['no_kk'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['profession'] = profession;
-    _data['address'] = address;
-    _data['education'] = education;
-    _data['birth_date'] = birthDate;
-    _data['sex'] = sex;
-    _data['relation'] = relation;
-    _data['religion'] = religion;
-    _data['nik'] = nik;
-    _data['surname'] = surname;
-    _data['organization'] = organization;
-    _data['name'] = name;
-    _data['phone_number'] = phoneNumber;
-    _data['no_kk'] = noKk;
-    return _data;
+    return {
+      'family_relation': familyRelation,
+      'profession': profession,
+      'nik': nik,
+      'address': address,
+      'blood_type': bloodType,
+      'birth_date': birthDate
+          .toUtc()
+          .toIso8601String(), // Konversi ke UTC DateTime dan format ISO 8601
+      'sex': sex,
+      'family_uuid': familyUuid,
+      'name': name,
+      'phone_number': phoneNumber,
+      'id': id,
+      'religion': religion,
+    };
   }
+
+  String encodeToJson() => json.encode(toJson());
 }

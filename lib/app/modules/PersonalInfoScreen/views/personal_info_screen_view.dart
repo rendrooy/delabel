@@ -70,10 +70,10 @@ class PersonalInfoScreenView extends GetView<PersonalInfoScreenController> {
                       value: controller.memberModel.value!.data.sex,
                     ),
                     const SizedBox(height: kDefaultPadding),
-                    itemRow(
-                      field: "Pendidikan",
-                      value: controller.memberModel.value!.data.education,
-                    ),
+                    // itemRow(
+                    //   field: "Pendidikan",
+                    //   value: controller.memberModel.value!.data.education,
+                    // ),
                     const SizedBox(height: kDefaultPadding),
                     itemRow(
                       field: "Pekerjaan",

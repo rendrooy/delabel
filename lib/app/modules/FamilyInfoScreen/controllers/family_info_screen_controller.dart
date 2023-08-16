@@ -36,7 +36,7 @@ class FamilyInfoScreenController extends GetxController with StateMixin {
 
   Future<void> getPersonalInfo() async {
     var res = await MemberService()
-        .getOne(value: userModel.value!.data.nik, field: "nik");
+        .getOne(value: userModel.value!.data.id, field: "nik");
     memberModel.value = MemberModel.fromJson(res);
   }
 

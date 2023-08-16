@@ -24,7 +24,7 @@ void logKey([key, content]) {
   if (content != null) {
     log('$key => $finalLog');
   } else {
-    print(finalLog);
+    log(finalLog);
   }
 }
 

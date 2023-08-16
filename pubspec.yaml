@@ -7,13 +7,12 @@ environment:
 
 dependencies:
   get: 4.6.5
-  firebase_core: ^2.15.0
-  cupertino_icons: ^1.0.2
-  firebase_auth: ^4.7.2
-  cloud_firestore: ^4.8.4
-
+  firebase_core:
+  cupertino_icons:
+  firebase_auth:
+  cloud_firestore:
   form_builder_validators:
-  bottom_navy_bar: ^6.0.0
+  bottom_navy_bar:
   expandable:
   crypto:
   uuid:
