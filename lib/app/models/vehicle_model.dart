@@ -23,29 +23,37 @@ class VehicleModel {
 
 class Data {
   Data({
-    required this.noPol,
-    required this.brandName,
-    required this.noKk,
+    required this.familyId,
+    required this.product,
+    required this.id,
     required this.type,
+    required this.brand,
+    required this.registrationNo,
   });
-  late final String noPol;
-  late final String brandName;
-  late final String noKk;
+  late final String familyId;
+  late final String product;
+  late final String id;
   late final String type;
+  late final String brand;
+  late final String registrationNo;
 
   Data.fromJson(Map<String, dynamic> json) {
-    noPol = json['no_pol'];
-    brandName = json['brand_name'];
-    noKk = json['no_kk'];
+    familyId = json['family_id'];
+    product = json['product'];
+    id = json['id'];
     type = json['type'];
+    brand = json['brand'];
+    registrationNo = json['registration_no'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['no_pol'] = noPol;
-    _data['brand_name'] = brandName;
-    _data['no_kk'] = noKk;
+    _data['family_id'] = familyId;
+    _data['product'] = product;
+    _data['id'] = id;
     _data['type'] = type;
+    _data['brand'] = brand;
+    _data['registration_no'] = registrationNo;
     return _data;
   }
 }

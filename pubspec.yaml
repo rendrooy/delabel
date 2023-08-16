@@ -7,8 +7,9 @@ environment:
 
 dependencies:
   get: 4.6.5
-  firebase_core:
   cupertino_icons:
+  firebase_core:
+  firebase_storage:
   firebase_auth:
   cloud_firestore:
   form_builder_validators:

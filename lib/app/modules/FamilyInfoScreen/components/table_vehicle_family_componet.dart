@@ -50,13 +50,13 @@ class TableVehicleFamilyComponent extends GetView<FamilyInfoScreenController> {
                   controller.listVehicleFamily.value.length,
                   (index) => DataRow(cells: [
                     DataCell(
-                      DefText(controller
-                              .listVehicleFamily.value[index].data.noPol)
+                      DefText(controller.listVehicleFamily.value[index].data
+                              .registrationNo)
                           .normal,
                     ),
                     DataCell(
                       DefText(controller
-                              .listVehicleFamily.value[index].data.brandName)
+                              .listVehicleFamily.value[index].data.product)
                           .normal,
                     ),
                     DataCell(

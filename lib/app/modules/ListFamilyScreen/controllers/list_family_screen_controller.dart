@@ -36,9 +36,9 @@ class ListFamilyScreenController extends GetxController {
     // print(res.toString());
     // relatedMember = res.map((e) => MemberModel.fromJson(e)).toList();
     for (var i = 0; i < res.length; i++) {
-      MemberModel data = MemberModel.fromJson(res[i]);
-      MemberService().updateData(id: data.id, data: {
-        ...data.toJson(),
+      MemberModel dataMember = MemberModel.fromJson(res[i]);
+      MemberService().updateData(id: dataMember.id, data: {
+        ...dataMember.data.toJson(),
         "family_id": "",
         "family_relation": "",
       });

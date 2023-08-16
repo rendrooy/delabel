@@ -28,8 +28,8 @@ class FamilyInfoScreenController extends GetxController with StateMixin {
     userModel.value = UserModel.fromJson(box.read(kUserData));
     await getPersonalInfo();
     await getFamilyInfo();
-    // getMemberFamily();
-    // getVehicleFamily();
+    getMemberFamily();
+    getVehicleFamily();
 
     super.onInit();
   }
@@ -51,8 +51,8 @@ class FamilyInfoScreenController extends GetxController with StateMixin {
   Future<void> getMemberFamily() async {
     List<Map<String, dynamic>> relatedFamily =
         await MemberService().getRelatedFamily(
-      value: memberModel.value!.data.noKk,
-      field: "no_kk",
+      value: memberModel.value!.data.familyId,
+      field: "family_id",
     );
     listMemberFamily.value =
         relatedFamily.map((e) => MemberModel.fromJson(e)).toList();
@@ -63,9 +63,10 @@ class FamilyInfoScreenController extends GetxController with StateMixin {
     // logKey(res);
     List<Map<String, dynamic>> familyVehicle =
         await VehicleServices().getFamilyVehicle(
-      value: memberModel.value!.data.noKk,
-      field: "no_kk",
+      value: memberModel.value!.data.familyId,
+      field: "family_id",
     );
+    logKey({"fa": familyVehicle});
     listVehicleFamily.value =
         familyVehicle.map((e) => VehicleModel.fromJson(e)).toList();
     // logKey({"dat": familyVehicle});
