@@ -4,6 +4,8 @@ import '../modules/FamilyInfoScreen/bindings/family_info_screen_binding.dart';
 import '../modules/FamilyInfoScreen/views/family_info_screen_view.dart';
 import '../modules/FinanceReportScreen/bindings/finance_report_screen_binding.dart';
 import '../modules/FinanceReportScreen/views/finance_report_screen_view.dart';
+import '../modules/FormFamilyScreen/bindings/form_family_screen_binding.dart';
+import '../modules/FormFamilyScreen/views/form_family_screen_view.dart';
 import '../modules/FormMemberScreen/bindings/form_member_screen_binding.dart';
 import '../modules/FormMemberScreen/views/form_member_screen_view.dart';
 import '../modules/HomeScreen/bindings/home_screen_binding.dart';
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.FORM_MEMBER_SCREEN,
       page: () => const FormMemberScreenView(),
       binding: FormMemberScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORM_FAMILY_SCREEN,
+      page: () => const FormFamilyScreenView(),
+      binding: FormFamilyScreenBinding(),
     ),
   ];
 }

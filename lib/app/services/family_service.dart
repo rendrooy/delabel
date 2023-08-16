@@ -30,6 +30,26 @@ class FamilyService {
     return allData;
   }
 
+  Future<List> getAllDataFilter({
+    limit = 1000,
+    required field,
+    required value,
+  }) async {
+    var allData = [];
+    QuerySnapshot querySnapshot =
+        await family.limit(limit).where(field, isEqualTo: value).get();
+
+    logKey(querySnapshot.docs.length);
+    for (var i = 0; i < querySnapshot.docs.length; i++) {
+      allData.add({
+        "id": querySnapshot.docs[i].id,
+        'data': querySnapshot.docs[i].data()
+      });
+    }
+
+    return allData;
+  }
+
   Future<void> updateData({required id, required data}) {
     return family
         .doc(id)

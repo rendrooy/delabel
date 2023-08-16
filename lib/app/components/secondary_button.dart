@@ -28,11 +28,13 @@ class SecondaryButton extends StatelessWidget {
     return MaterialButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
-        side: BorderSide(color: Colors.green),
+        side: const BorderSide(color: Colors.white),
       ),
       onPressed: onPress,
       minWidth: double.infinity,
       height: 45,
+      color: Colors.transparent,
+      elevation: 0,
       // disabledColor: kInactiveColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +43,12 @@ class SecondaryButton extends StatelessWidget {
             Row(
               children: [
                 Icon(icon, size: 20),
-                SizedBox(width: kDefaultPadding * 0.5),
+                const SizedBox(width: kDefaultPadding * 0.5),
               ],
             ),
           text
         ],
       ),
-      color: Colors.transparent,
-      elevation: 0,
     );
     // MaterialButton(
     //     onPressed: onPress,

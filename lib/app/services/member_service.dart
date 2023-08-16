@@ -83,6 +83,33 @@ class MemberService {
     return allData;
   }
 
+  Future<List<Map<String, dynamic>>> getMemberHasNotFamily({
+    int limit = 1000,
+    // required dynamic value,
+    // required String field,
+  }) async {
+    List<Map<String, dynamic>> allData = [];
+
+    try {
+      QuerySnapshot querySnapshot =
+          await members.limit(limit).where("family_id", isEqualTo: "").get();
+
+      // print("querySnapshot length: ${querySnapshot.docs.length}");
+      // print("querySnapshot length: ${members.path}");
+
+      for (var doc in querySnapshot.docs) {
+        allData.add({
+          "id": doc.id,
+          'data': doc.data(),
+        });
+      }
+    } catch (e) {
+      print("Error getting related family: $e");
+    }
+
+    return allData;
+  }
+
   Future<dynamic> getOne({required value, required field}) async {
     try {
       var querySnapshot =
