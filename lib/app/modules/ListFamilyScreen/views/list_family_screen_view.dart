@@ -27,7 +27,7 @@ class ListFamilyScreenView extends GetView<ListFamilyScreenController> {
               IconButton(
                 onPressed: () async {
                   await Get.toNamed(Routes.FORM_FAMILY_SCREEN);
-                  // controller.getlistFamily();
+                  controller.getListFamily();
                 },
                 splashRadius: 20,
                 icon: const Icon(Icons.add),
@@ -74,9 +74,7 @@ class ListFamilyScreenView extends GetView<ListFamilyScreenController> {
                       ),
                       DataCell(
                         DefText(
-                          // dateFormater(
                           controller.listFamily.value[index].data.address,
-                          // ),
                         ).normal,
                       ),
                       DataCell(
@@ -91,14 +89,12 @@ class ListFamilyScreenView extends GetView<ListFamilyScreenController> {
                         Row(
                           children: [
                             IconButton(
-                              onPressed: () {
-                                Get.toNamed(
+                              onPressed: () async {
+                                await Get.toNamed(
                                   Routes.FORM_FAMILY_SCREEN,
                                   arguments: controller.listFamily.value[index],
                                 );
-                                // controller.updateMember(
-                                //   controller.listFamily.value[index],
-                                // );
+                                controller.getListFamily();
                               },
                               splashRadius: 20,
                               icon: const Icon(Icons.edit),
@@ -110,11 +106,9 @@ class ListFamilyScreenView extends GetView<ListFamilyScreenController> {
                                     title:
                                         "Yakin Menghapus ${controller.listFamily.value[index].data.noKk}",
                                     onConfrim: () {
-                                      // controller.deleteMember(
-                                      //   controller
-                                      //       .listFamily.value[index].id,
-                                      // );
                                       Get.back();
+                                      controller.deleteFamily(
+                                          controller.listFamily.value[index]);
                                     },
                                   ),
                                 );
@@ -131,9 +125,6 @@ class ListFamilyScreenView extends GetView<ListFamilyScreenController> {
               ),
             ),
           )
-          // SingleChildScrollView(
-          //   child: ,
-          // )
         ],
       ),
     );

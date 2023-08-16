@@ -1,5 +1,8 @@
 import 'package:delabel_v3/app/models/family_model.dart';
+import 'package:delabel_v3/app/models/member_model.dart';
 import 'package:delabel_v3/app/services/family_service.dart';
+import 'package:delabel_v3/app/services/member_service.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../util/func_util.dart';
@@ -13,15 +16,37 @@ class ListFamilyScreenController extends GetxController {
 
   @override
   void onInit() {
-    getListMember();
+    getListFamily();
     super.onInit();
   }
 
-  Future<void> getListMember() async {
+  Future<void> getListFamily() async {
     var res = await FamilyService().getAllData();
     listFamily.value = res.map((e) => FamilyModel.fromJson(e)).toList();
     logKey({"asdasd": res});
     // print(res);
+  }
+
+  void deleteFamily(FamilyModel familyModel) async {
+    dialogLoading();
+    // List relatedMember = <MemberModel>[];
+    await FamilyService().deleteData(id: familyModel.id);
+    var res = await MemberService()
+        .getRelatedFamily(value: familyModel.data.id, field: 'family_id');
+    // print(res.toString());
+    // relatedMember = res.map((e) => MemberModel.fromJson(e)).toList();
+    for (var i = 0; i < res.length; i++) {
+      MemberModel data = MemberModel.fromJson(res[i]);
+      MemberService().updateData(id: data.id, data: {
+        ...data.toJson(),
+        "family_id": "",
+        "family_relation": "",
+      });
+    }
+    Navigator.of(Get.overlayContext!).pop();
+    // Get.back();
+    showSnackbar(pesan: "Berhasil menghapus data");
+    getListFamily();
   }
 
   void increment() => count.value++;

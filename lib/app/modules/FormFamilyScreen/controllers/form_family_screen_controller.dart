@@ -71,7 +71,7 @@ class FormFamilyScreenController extends GetxController {
   }
 
   void addFamilyMember(data) async {
-    dialogLoading();
+    // dialogLoading();
     DataMemberModel dataMemberModel = DataMemberModel.fromJson({
       ...data['member']['data'],
       'family_relation': data['relation'],
@@ -85,8 +85,18 @@ class FormFamilyScreenController extends GetxController {
       id: memberModel.value!.id,
       data: memberModel.value!.data.toJson(),
     );
+    if (data['relation'] == "Kepala Keluarga") {
+      FamilyService().updateData(
+        id: familyModel.value!.id,
+        data: {
+          ...familyModel.value!.data.toJson(),
+          'family_head': memberModel.value!.data.name,
+        },
+      );
+    }
     listSelectedMember.add(memberModel.value!);
-    Navigator.of(Get.overlayContext!).pop();
+    // Navigator.of(Get.overlayContext!).pop();
+    Get.back();
     showSnackbar(pesan: "Berhasil menambahkan anggota keluarga");
   }
 
@@ -173,7 +183,18 @@ class FormFamilyScreenController extends GetxController {
       },
     );
     listSelectedMember.remove(dataMember);
+    if (dataMember.data.familyRelation == "Kepala Keluarga") {
+      FamilyService().updateData(
+        id: familyModel.value!.id,
+        data: {
+          ...familyModel.value!.data.toJson(),
+          'family_head': "",
+        },
+      );
+    }
+    Get.back();
     showSnackbar(pesan: "Berhasil menghapus anggota keluarga");
+    update();
   }
 
   void getListRelatedMember() async {

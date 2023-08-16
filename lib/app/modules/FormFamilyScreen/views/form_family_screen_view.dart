@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
+import '../../../components/confirm_dialog.dart';
 import '../../../components/defText.dart';
 import '../../AppBar/views/app_bar_view.dart';
 import '../controllers/form_family_screen_controller.dart';
@@ -111,7 +112,16 @@ class FormFamilyScreenView extends GetView<FormFamilyScreenController> {
                         .normal,
                     trailing: IconButton(
                       splashRadius: 30,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.dialog(ConfirmDialog(
+                          title:
+                              "Hapus ${controller.listSelectedMember.value[index].data.name} Dari Keluarga?",
+                          onConfrim: () {
+                            controller.deleteRelatedMember(
+                                controller.listSelectedMember.value[index]);
+                          },
+                        ));
+                      },
                       icon: const Icon(Icons.delete_outline_outlined),
                     ),
                   ),
