@@ -40,7 +40,7 @@ class DataMemberModel {
   int phoneNumber;
   String id;
   String religion;
-  // String relation;
+  String photoUrl;
 
   DataMemberModel({
     required this.familyRelation,
@@ -56,7 +56,7 @@ class DataMemberModel {
     required this.phoneNumber,
     required this.id,
     required this.religion,
-    // required this.relation,
+    required this.photoUrl,
   });
 
   factory DataMemberModel.fromJson(Map<String, dynamic> json) {
@@ -80,7 +80,7 @@ class DataMemberModel {
           : json['phone_number'],
       id: json['id'] ?? const Uuid().v4(),
       religion: json['religion'],
-      // relation: json['relation'] ?? "",
+      photoUrl: json['photo_url'] ?? "",
     );
   }
 
@@ -98,6 +98,7 @@ class DataMemberModel {
       'phone_number': phoneNumber,
       'id': id,
       'religion': religion,
+      'photo_url': photoUrl,
     };
   }
 
@@ -117,6 +118,7 @@ class DataMemberModel {
       'phone_number': phoneNumber,
       'id': id,
       'religion': religion,
+      'photo_url': photoUrl,
     };
   }
 

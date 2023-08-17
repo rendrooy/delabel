@@ -34,7 +34,6 @@ class PersonalInfoScreenController extends GetxController with StateMixin {
       value: userModel.value!.data.memberId,
     );
     memberModel.value = MemberModel.fromJson(data);
-    logKey("dari db", memberModel.value!.toJson());
   }
 
   Future<void> getOrganization() async {

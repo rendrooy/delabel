@@ -96,6 +96,7 @@ class SideMenu extends StatelessWidget {
                             icon: Icons.people_alt_rounded,
                             press: () {
                               Get.back();
+                              Get.toNamed(Routes.LIST_VEHICLE_SCREEN);
                             },
                           ),
                         ),
