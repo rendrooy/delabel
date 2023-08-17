@@ -1,16 +1,18 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import 'package:uuid/uuid.dart';
+
 class VehicleModel {
   VehicleModel({
     required this.id,
     required this.data,
   });
   late final String id;
-  late final Data data;
+  late final DataVehicleModel data;
 
   VehicleModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    data = Data.fromJson(json['data']);
+    data = DataVehicleModel.fromJson(json['data']);
   }
 
   Map<String, dynamic> toJson() {
@@ -21,8 +23,8 @@ class VehicleModel {
   }
 }
 
-class Data {
-  Data({
+class DataVehicleModel {
+  DataVehicleModel({
     required this.familyId,
     required this.product,
     required this.id,
@@ -37,10 +39,10 @@ class Data {
   late final String brand;
   late final String registrationNo;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  DataVehicleModel.fromJson(Map<String, dynamic> json) {
     familyId = json['family_id'];
     product = json['product'];
-    id = json['id'];
+    id = json['id'] ?? const Uuid().v4();
     type = json['type'];
     brand = json['brand'];
     registrationNo = json['registration_no'];

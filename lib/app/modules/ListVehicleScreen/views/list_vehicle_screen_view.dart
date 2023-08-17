@@ -25,8 +25,7 @@ class ListVehicleScreenView extends GetView<ListVehicleScreenController> {
               DefText("List Vehicle", fontWeight: FontWeight.bold).semiLarge,
               IconButton(
                 onPressed: () async {
-                  // await Get.toNamed(Routes.FORM_FAMILY_SCREEN);
-                  // controller.getlistVehicle();
+                  controller.bottomSheetFormVehicle();
                 },
                 splashRadius: 20,
                 icon: const Icon(Icons.add),
@@ -40,20 +39,14 @@ class ListVehicleScreenView extends GetView<ListVehicleScreenController> {
               () => DataTable(
                 columns: const [
                   DataColumn(
-                    label: Text('No KK'),
+                    label: Text('No Polisi'),
                   ),
                   DataColumn(
-                    label: Text('Kepala Keluarga'),
+                    label: Text('Merk'),
                   ),
                   DataColumn(
-                    label: Text('Alamat'),
+                    label: Text('Tipe'),
                   ),
-                  // DataColumn(
-                  //   label: Text('No PBB'),
-                  // ),
-                  // DataColumn(
-                  //   label: Text('Kode Pos'),
-                  // ),
                   DataColumn(
                     label: Text('Actions'),
                   ),
@@ -77,25 +70,14 @@ class ListVehicleScreenView extends GetView<ListVehicleScreenController> {
                           controller.listVehicle.value[index].data.type,
                         ).normal,
                       ),
-                      // DataCell(
-                      //   DefText("${controller.listVehicle.value[index].data.noPbb ?? ""}")
-                      //       .normal,
-                      // ),
-                      // DataCell(
-                      //   DefText("${controller.listVehicle.value[index].data.postalCode ?? ""}")
-                      //       .normal,
-                      // ),
                       DataCell(
                         Row(
                           children: [
                             IconButton(
                               onPressed: () async {
-                                // await Get.toNamed(
-                                //   Routes.FORM_FAMILY_SCREEN,
-                                //   arguments:
-                                //       controller.listVehicle.value[index],
-                                // );
-                                // controller.getlistVehicle();
+                                controller.bottomSheetFormVehicle(
+                                  vehicle: controller.listVehicle.value[index],
+                                );
                               },
                               splashRadius: 20,
                               icon: const Icon(Icons.edit),
@@ -108,8 +90,6 @@ class ListVehicleScreenView extends GetView<ListVehicleScreenController> {
                                         "Yakin Menghapus ${controller.listVehicle.value[index].data.registrationNo}",
                                     onConfrim: () {
                                       Get.back();
-                                      // controller.deleteFamily(
-                                      // controller.listVehicle.value[index]);
                                     },
                                   ),
                                 );
