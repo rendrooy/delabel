@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../config/constants.dart';
 import '../../../models/member_model.dart';
@@ -48,6 +49,26 @@ class LoginScreenController extends GetxController {
       } else if (e.code == 'wrong-password') {
         showSnackbar(pesan: 'Password Tidak Cocok');
       }
+    }
+  }
+
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  Future<UserCredential?> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+        return await auth.signInWithCredential(credential);
+      }
+    } catch (error) {
+      print("Error signing in with Google: $error");
     }
   }
 

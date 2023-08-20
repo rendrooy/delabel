@@ -18,6 +18,7 @@ dependencies:
   crypto:
   uuid:
   flutter_form_builder:
+  google_sign_in: ^6.1.4
   intl:
   flutter_spinkit:
   responsive_table:

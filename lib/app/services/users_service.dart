@@ -65,10 +65,10 @@ class UserService {
   }
 
   Future<dynamic> getOne({required value, required field}) async {
-    logKey(value);
+    // logKey(value );
     try {
       var querySnapshot = await user.where("$field", isEqualTo: "$value").get();
-      // logKey(querySnapshot.docs[0].data())
+      logKey(querySnapshot.docs[0].data());
       var dataTemp = ({
         "id": querySnapshot.docs[0].id,
         'data': querySnapshot.docs[0].data()

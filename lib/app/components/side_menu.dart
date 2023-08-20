@@ -82,7 +82,7 @@ class SideMenu extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 20),
                           child: DrawerListTile(
                             title: "List Member",
-                            icon: Icons.people_alt_rounded,
+                            icon: Icons.account_circle_outlined,
                             press: () {
                               Get.back();
                               Get.toNamed(Routes.LIST_MEMBER_SCREEN);
@@ -93,7 +93,7 @@ class SideMenu extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 20),
                           child: DrawerListTile(
                             title: "List Vehicle",
-                            icon: Icons.people_alt_rounded,
+                            icon: Icons.motorcycle_outlined,
                             press: () {
                               Get.back();
                               Get.toNamed(Routes.LIST_VEHICLE_SCREEN);
@@ -112,6 +112,14 @@ class SideMenu extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  DrawerListTile(
+                    title: "Settings",
+                    icon: Icons.settings_outlined,
+                    press: () async {
+                      Get.back();
+                      Get.toNamed(Routes.FAMILY_INFO_SCREEN);
+                    },
                   ),
                   DrawerListTile(
                     title: "Keluar",

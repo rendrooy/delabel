@@ -112,8 +112,7 @@ class MemberService {
 
   Future<dynamic> getOne({required value, required field}) async {
     try {
-      var querySnapshot =
-          await members.where("$field", isEqualTo: "$value").get();
+      var querySnapshot = await members.where(field, isEqualTo: "$value").get();
       logKey("value", querySnapshot.docs.length);
 
       var dataTemp = ({

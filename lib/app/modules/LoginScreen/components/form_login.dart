@@ -12,6 +12,7 @@ import '../../../components/input_builder.dart';
 import '../../../components/primary_button.dart';
 // import '../../../config/constans.dart';
 import '../../../config/constants.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/login_screen_controller.dart';
 
 class FormLogin extends GetView<LoginScreenController> {
@@ -48,6 +49,15 @@ class FormLogin extends GetView<LoginScreenController> {
             text: DefText("Sign in").normal,
             onPress: () {
               controller.firebaseAuth();
+              // controller.login();
+            },
+          ),
+          // const SizedBox(height: kDefaultPadding),
+          PrimaryButton(
+            text: DefText("Register").normal,
+            onPress: () {
+              Get.toNamed(Routes.REGISTER_SCREEN);
+              // controller.firebaseAuth();
               // controller.login();
             },
           )

@@ -80,37 +80,148 @@ class HomeScreenView extends GetView<HomeScreenController> {
                         }
                       },
                     );
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(5),
-                    //     color: kSecondaryColor,
-                    //     boxShadow: [kDefaultShadow],
-                    //   ),
-                    //   padding: const EdgeInsets.all(kDefaultPadding / 2),
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(5),
-                    //       color: bgColor,
-                    //     ),
-                    //     padding: const EdgeInsets.all(kDefaultPadding),
-                    //     child: Row(
-                    //       children: [
-                    //         Icon(controller.menu[index]['icon']),
-                    //         const SizedBox(width: kDefaultPadding),
-                    //         Expanded(
-                    //           child: DefText(controller.menu[index]['title'])
-                    //               .semiLarge,
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // );
                   },
-                )
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DefText(
+                          "News",
+                          fontWeight: FontWeight.bold,
+                        ).semiLarge,
+                        GestureDetector(
+                            onTap: () {
+                              // Get.toNamed(
+                              //   Routes.LIST_AGENDA_SCREEN,
+                              //   arguments: category,
+                              // );
+                            },
+                            child: DefText("Selengkapnya").normal),
+                      ],
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.2,
+                      child: PageView(
+                        padEnds: true,
+                        children: [
+                          ...List.generate(4, (i) {
+                            return _beasiswaItem();
+                          }),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: kDefaultPadding),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DefText(
+                          "Event",
+                          fontWeight: FontWeight.bold,
+                        ).semiLarge,
+                        GestureDetector(
+                            onTap: () {
+                              // Get.toNamed(
+                              //   Routes.LIST_AGENDA_SCREEN,
+                              //   arguments: category,
+                              // );
+                            },
+                            child: DefText("Selengkapnya").normal),
+                      ],
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.2,
+                      child: PageView(
+                        padEnds: true,
+                        children: [
+                          ...List.generate(4, (i) {
+                            return _beasiswaItem();
+                          }),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           );
         });
+  }
+
+  Widget _beasiswaItem() {
+    return Container(
+        margin: const EdgeInsets.symmetric(
+            horizontal: kDefaultPadding / 2, vertical: kDefaultPadding / 2),
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          boxShadow: [kDefaultShadow],
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: MaterialButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            // Get.toNamed(Routes.DETAIL_AGENDA_SCREEN, arguments: {
+            //   "data": dataAgendaModel,
+            // });
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                  borderRadius: const BorderRadius.horizontal(
+                    left: Radius.circular(5),
+                  ),
+                  child:
+                      // dataAgendaModel.fileMedia!.isEmpty
+                      //     ?
+                      Container(
+                          height: 150,
+                          width: 150,
+                          alignment: Alignment.center,
+                          child: const Icon(Icons.image_not_supported_rounded))
+                  //     : CachedNetworkImage(
+                  //         imageUrl: dataAgendaModel.fileMedia![0].url!,
+                  //         errorWidget: (c, s, e) {
+                  //           return Icon(Icons.image_not_supported_outlined);
+                  //         },
+                  //         height: 150,
+                  //         width: 150,
+                  //         fit: BoxFit.cover,
+                  //       )
+                  ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: DefText("dataAgendaModel.title!",
+                                    fontWeight: FontWeight.bold, maxLine: 1)
+                                .semiLarge,
+                          ),
+                        ],
+                      ),
+                      DefText(
+                        "dataAgendaModel.deskripsi!",
+                        textAlign: TextAlign.left,
+                        maxLine: 3,
+                      ).normal,
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 
   Widget _menuItem({
@@ -134,17 +245,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
             shape: const CircleBorder(),
             padding: const EdgeInsets.all(kDefaultPadding / 2),
             onPressed: () => onClick(),
-            // height: 25,
             child: Icon(icon),
-            // ImageNetwork(
-            //   image: image,
-            //   onTap: () => onClick(),
-            //   width: 30,
-            //   onError: const Icon(
-            //     Icons.error,
-            //     color: Colors.white,
-            //   ),
-            // ),
           ),
         ),
         const SizedBox(

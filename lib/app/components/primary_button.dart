@@ -27,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
       height: height,
       minWidth: double.infinity,
       disabledColor: kInactiveColor,
-      color: color ?? primaryColor,
+      color: color ?? secondaryColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
