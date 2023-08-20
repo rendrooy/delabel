@@ -64,19 +64,27 @@ class Permissions {
   Permissions({
     required this.masterMember,
     required this.masterFamilies,
+    required this.masterNews,
+    required this.masterEvents,
   });
   late final MasterMember masterMember;
   late final MasterFamilies masterFamilies;
+  late final MasterNews masterNews;
+  late final MasterEvents masterEvents;
 
   Permissions.fromJson(Map json) {
     masterMember = MasterMember.fromJson(json['master_member']);
     masterFamilies = MasterFamilies.fromJson(json['master_families']);
+    masterNews = MasterNews.fromJson(json['master_news']);
+    masterEvents = MasterEvents.fromJson(json['master_events']);
   }
 
   Map toJson() {
     final _data = {};
     _data['master_member'] = masterMember.toJson();
     _data['master_families'] = masterFamilies.toJson();
+    _data['master_news'] = masterNews.toJson();
+    _data['master_events'] = masterEvents.toJson();
     return _data;
   }
 }
@@ -123,6 +131,64 @@ class MasterFamilies {
   late final bool delete;
 
   MasterFamilies.fromJson(Map json) {
+    read = json['read'] ?? false;
+    update = json['update'] ?? false;
+    create = json['create'] ?? false;
+    delete = json['delete'] ?? false;
+  }
+
+  Map toJson() {
+    final _data = {};
+    _data['read'] = read;
+    _data['update'] = update;
+    _data['create'] = create;
+    _data['delete'] = delete;
+    return _data;
+  }
+}
+
+class MasterNews {
+  MasterNews({
+    required this.read,
+    required this.update,
+    required this.create,
+    required this.delete,
+  });
+  late final bool read;
+  late final bool update;
+  late final bool create;
+  late final bool delete;
+
+  MasterNews.fromJson(Map json) {
+    read = json['read'] ?? false;
+    update = json['update'] ?? false;
+    create = json['create'] ?? false;
+    delete = json['delete'] ?? false;
+  }
+
+  Map toJson() {
+    final _data = {};
+    _data['read'] = read;
+    _data['update'] = update;
+    _data['create'] = create;
+    _data['delete'] = delete;
+    return _data;
+  }
+}
+
+class MasterEvents {
+  MasterEvents({
+    required this.read,
+    required this.update,
+    required this.create,
+    required this.delete,
+  });
+  late final bool read;
+  late final bool update;
+  late final bool create;
+  late final bool delete;
+
+  MasterEvents.fromJson(Map json) {
     read = json['read'] ?? false;
     update = json['update'] ?? false;
     create = json['create'] ?? false;
