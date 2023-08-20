@@ -17,6 +17,9 @@ abstract class Routes {
   static const LIST_VEHICLE_SCREEN = _Paths.LIST_VEHICLE_SCREEN;
   static const FORM_MEMBER_SCREEN = _Paths.FORM_MEMBER_SCREEN;
   static const FORM_FAMILY_SCREEN = _Paths.FORM_FAMILY_SCREEN;
+  static const LIST_NEWS = _Paths.LIST_NEWS;
+  static const LIST_NEWS_SCREEN = _Paths.LIST_NEWS_SCREEN;
+  static const SETTINGS_SCREEN = _Paths.SETTINGS_SCREEN;
 }
 
 abstract class _Paths {
@@ -33,4 +36,7 @@ abstract class _Paths {
   static const LIST_VEHICLE_SCREEN = '/list-vehicle-screen';
   static const FORM_MEMBER_SCREEN = '/form-member-screen';
   static const FORM_FAMILY_SCREEN = '/form-family-screen';
+  static const LIST_NEWS = '/list-news';
+  static const LIST_NEWS_SCREEN = '/list-news-screen';
+  static const SETTINGS_SCREEN = '/settings-screen';
 }

@@ -64,27 +64,27 @@ class Permissions {
   Permissions({
     required this.masterMember,
     required this.masterFamilies,
-    required this.masterNews,
-    required this.masterEvents,
+    // required this.masterNews,
+    // required this.masterEvents,
   });
   late final MasterMember masterMember;
   late final MasterFamilies masterFamilies;
-  late final MasterNews masterNews;
-  late final MasterEvents masterEvents;
+  // late final MasterNews masterNews;
+  // late final MasterEvents masterEvents;
 
   Permissions.fromJson(Map json) {
     masterMember = MasterMember.fromJson(json['master_member']);
     masterFamilies = MasterFamilies.fromJson(json['master_families']);
-    masterNews = MasterNews.fromJson(json['master_news']);
-    masterEvents = MasterEvents.fromJson(json['master_events']);
+    // masterNews = MasterNews.fromJson(json['master_news']);
+    // masterEvents = MasterEvents.fromJson(json['master_events']);
   }
 
   Map toJson() {
     final _data = {};
     _data['master_member'] = masterMember.toJson();
     _data['master_families'] = masterFamilies.toJson();
-    _data['master_news'] = masterNews.toJson();
-    _data['master_events'] = masterEvents.toJson();
+    // _data['master_news'] = masterNews.toJson();
+    // _data['master_events'] = masterEvents.toJson();
     return _data;
   }
 }

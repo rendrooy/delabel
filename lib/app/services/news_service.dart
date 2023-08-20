@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../util/func_util.dart';
 
-class UserService {
-  CollectionReference user = FirebaseFirestore.instance.collection('users');
+class NewsServices {
+  CollectionReference user = FirebaseFirestore.instance.collection('news');
 
   Future<void> insertData({required Map<String, dynamic> value}) {
     return user

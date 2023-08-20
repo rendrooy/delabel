@@ -3,12 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:delabel_v3/app/components/defText.dart';
 import 'package:delabel_v3/app/components/side_menu.dart';
 import 'package:delabel_v3/app/modules/AppBar/views/app_bar_view.dart';
+import 'package:delabel_v3/app/routes/app_pages.dart';
 import 'package:delabel_v3/app/util/func_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 import '../../../config/constants.dart';
+import '../../../models/news_model.dart';
 import '../controllers/home_screen_controller.dart';
 
 class HomeScreenView extends GetView<HomeScreenController> {
@@ -82,70 +84,72 @@ class HomeScreenView extends GetView<HomeScreenController> {
                     );
                   },
                 ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DefText(
-                          "News",
-                          fontWeight: FontWeight.bold,
-                        ).semiLarge,
-                        GestureDetector(
-                            onTap: () {
-                              // Get.toNamed(
-                              //   Routes.LIST_AGENDA_SCREEN,
-                              //   arguments: category,
-                              // );
-                            },
-                            child: DefText("Selengkapnya").normal),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.2,
-                      child: PageView(
-                        padEnds: true,
+                Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ...List.generate(4, (i) {
-                            return _beasiswaItem();
-                          }),
+                          DefText(
+                            "News",
+                            fontWeight: FontWeight.bold,
+                          ).large,
+                          GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.LIST_NEWS_SCREEN);
+                              },
+                              child: DefText("Selengkapnya").normal),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: kDefaultPadding),
+                      SizedBox(
+                        height: Get.height * 0.2,
+                        child: PageView(
+                          padEnds: true,
+                          children: [
+                            ...List.generate(controller.listNews.value.length,
+                                (i) {
+                              NewsModel e = controller.listNews.value[i];
+                              return _beasiswaItem(e);
+                            }),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: kDefaultPadding),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DefText(
-                          "Event",
-                          fontWeight: FontWeight.bold,
-                        ).semiLarge,
-                        GestureDetector(
-                            onTap: () {
-                              // Get.toNamed(
-                              //   Routes.LIST_AGENDA_SCREEN,
-                              //   arguments: category,
-                              // );
-                            },
-                            child: DefText("Selengkapnya").normal),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.2,
-                      child: PageView(
-                        padEnds: true,
+                // const SizedBox(height: kDefaultPadding),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                      kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ...List.generate(4, (i) {
-                            return _beasiswaItem();
-                          }),
+                          DefText(
+                            "Event",
+                            fontWeight: FontWeight.bold,
+                          ).large,
+                          GestureDetector(
+                              onTap: () {},
+                              child: DefText("Selengkapnya").normal),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: kDefaultPadding),
+                      SizedBox(
+                        height: Get.height * 0.2,
+                        child: PageView(padEnds: true, children: [
+                          ...List.generate(controller.listNews.value.length,
+                              (i) {
+                            NewsModel e = controller.listNews.value[i];
+                            return _beasiswaItem(e);
+                          }),
+                        ]),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -153,7 +157,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
         });
   }
 
-  Widget _beasiswaItem() {
+  Widget _beasiswaItem(NewsModel item) {
     return Container(
         margin: const EdgeInsets.symmetric(
             horizontal: kDefaultPadding / 2, vertical: kDefaultPadding / 2),
@@ -164,11 +168,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
         ),
         child: MaterialButton(
           padding: EdgeInsets.zero,
-          onPressed: () {
-            // Get.toNamed(Routes.DETAIL_AGENDA_SCREEN, arguments: {
-            //   "data": dataAgendaModel,
-            // });
-          },
+          onPressed: () {},
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -176,42 +176,32 @@ class HomeScreenView extends GetView<HomeScreenController> {
                   borderRadius: const BorderRadius.horizontal(
                     left: Radius.circular(5),
                   ),
-                  child:
-                      // dataAgendaModel.fileMedia!.isEmpty
-                      //     ?
-                      Container(
-                          height: 150,
-                          width: 150,
-                          alignment: Alignment.center,
-                          child: const Icon(Icons.image_not_supported_rounded))
-                  //     : CachedNetworkImage(
-                  //         imageUrl: dataAgendaModel.fileMedia![0].url!,
-                  //         errorWidget: (c, s, e) {
-                  //           return Icon(Icons.image_not_supported_outlined);
-                  //         },
-                  //         height: 150,
-                  //         width: 150,
-                  //         fit: BoxFit.cover,
-                  //       )
-                  ),
+                  child: Container(
+                      height: 150,
+                      width: 150,
+                      alignment: Alignment.center,
+                      child: const Icon(Icons.image_not_supported_rounded))),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Expanded(
-                            child: DefText("dataAgendaModel.title!",
-                                    fontWeight: FontWeight.bold, maxLine: 1)
-                                .semiLarge,
+                            child: DefText(
+                              item.data.title,
+                              fontWeight: FontWeight.bold,
+                              maxLine: 1,
+                            ).semiLarge,
                           ),
                         ],
                       ),
+                      const SizedBox(height: kDefaultPadding / 2),
                       DefText(
-                        "dataAgendaModel.deskripsi!",
+                        item.data.content,
                         textAlign: TextAlign.left,
                         maxLine: 3,
                       ).normal,

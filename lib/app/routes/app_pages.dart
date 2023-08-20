@@ -14,6 +14,10 @@ import '../modules/ListFamilyScreen/bindings/list_family_screen_binding.dart';
 import '../modules/ListFamilyScreen/views/list_family_screen_view.dart';
 import '../modules/ListMemberScreen/bindings/list_member_screen_binding.dart';
 import '../modules/ListMemberScreen/views/list_member_screen_view.dart';
+import '../modules/ListNews/bindings/list_news_binding.dart';
+import '../modules/ListNews/views/list_news_view.dart';
+import '../modules/ListNewsScreen/bindings/list_news_screen_binding.dart';
+import '../modules/ListNewsScreen/views/list_news_screen_view.dart';
 import '../modules/ListVehicleScreen/bindings/list_vehicle_screen_binding.dart';
 import '../modules/ListVehicleScreen/views/list_vehicle_screen_view.dart';
 import '../modules/LoginScreen/bindings/login_screen_binding.dart';
@@ -26,6 +30,8 @@ import '../modules/ProfileScreen/bindings/profile_screen_binding.dart';
 import '../modules/ProfileScreen/views/profile_screen_view.dart';
 import '../modules/RegisterScreen/bindings/register_screen_binding.dart';
 import '../modules/RegisterScreen/views/register_screen_view.dart';
+import '../modules/SettingsScreen/bindings/settings_screen_binding.dart';
+import '../modules/SettingsScreen/views/settings_screen_view.dart';
 
 part 'app_routes.dart';
 
@@ -99,6 +105,21 @@ class AppPages {
       name: _Paths.FORM_FAMILY_SCREEN,
       page: () => const FormFamilyScreenView(),
       binding: FormFamilyScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_NEWS,
+      page: () => const ListNewsView(),
+      binding: ListNewsBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_NEWS_SCREEN,
+      page: () => const ListNewsScreenView(),
+      binding: ListNewsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS_SCREEN,
+      page: () => const SettingsScreenView(),
+      binding: SettingsScreenBinding(),
     ),
   ];
 }
