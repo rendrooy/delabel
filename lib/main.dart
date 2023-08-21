@@ -25,7 +25,7 @@ void main() async {
         // textTheme: GoogleFonts.interTextTheme(),
         canvasColor: secondaryColor,
       ),
-      title: "Application",
+      title: "Delabel",
       initialRoute: box.read(kUserData) != null
           ? Routes.MAIN_SCREEN
           : Routes.LOGIN_SCREEN,
