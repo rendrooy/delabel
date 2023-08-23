@@ -8,6 +8,8 @@ import '../modules/FormFamilyScreen/bindings/form_family_screen_binding.dart';
 import '../modules/FormFamilyScreen/views/form_family_screen_view.dart';
 import '../modules/FormMemberScreen/bindings/form_member_screen_binding.dart';
 import '../modules/FormMemberScreen/views/form_member_screen_view.dart';
+import '../modules/FormNewsAdminScreen/bindings/form_news_admin_screen_binding.dart';
+import '../modules/FormNewsAdminScreen/views/form_news_admin_screen_view.dart';
 import '../modules/HomeScreen/bindings/home_screen_binding.dart';
 import '../modules/HomeScreen/views/home_screen_view.dart';
 import '../modules/ListFamilyScreen/bindings/list_family_screen_binding.dart';
@@ -16,6 +18,8 @@ import '../modules/ListMemberScreen/bindings/list_member_screen_binding.dart';
 import '../modules/ListMemberScreen/views/list_member_screen_view.dart';
 import '../modules/ListNews/bindings/list_news_binding.dart';
 import '../modules/ListNews/views/list_news_view.dart';
+import '../modules/ListNewsAdminScreen/bindings/list_news_admin_screen_binding.dart';
+import '../modules/ListNewsAdminScreen/views/list_news_admin_screen_view.dart';
 import '../modules/ListNewsScreen/bindings/list_news_screen_binding.dart';
 import '../modules/ListNewsScreen/views/list_news_screen_view.dart';
 import '../modules/ListVehicleScreen/bindings/list_vehicle_screen_binding.dart';
@@ -120,6 +124,16 @@ class AppPages {
       name: _Paths.SETTINGS_SCREEN,
       page: () => const SettingsScreenView(),
       binding: SettingsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_NEWS_ADMIN_SCREEN,
+      page: () => const ListNewsAdminScreenView(),
+      binding: ListNewsAdminScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORM_NEWS_ADMIN_SCREEN,
+      page: () => const FormNewsAdminScreenView(),
+      binding: FormNewsAdminScreenBinding(),
     ),
   ];
 }

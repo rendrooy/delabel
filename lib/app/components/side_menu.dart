@@ -103,10 +103,11 @@ class SideMenu extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: DrawerListTile(
-                            title: "Organisasi External",
+                            title: "News",
                             icon: Icons.people_alt_rounded,
                             press: () {
                               Get.back();
+                              Get.toNamed(Routes.LIST_NEWS_ADMIN_SCREEN);
                             },
                           ),
                         ),
