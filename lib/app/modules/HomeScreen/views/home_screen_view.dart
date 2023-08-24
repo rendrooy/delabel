@@ -168,19 +168,29 @@ class HomeScreenView extends GetView<HomeScreenController> {
         ),
         child: MaterialButton(
           padding: EdgeInsets.zero,
+          onLongPress: () {},
           onPressed: () {},
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                  borderRadius: const BorderRadius.horizontal(
-                    left: Radius.circular(5),
+                borderRadius: const BorderRadius.horizontal(
+                  left: Radius.circular(5),
+                ),
+                child: Container(
+                  height: 160,
+                  width: 160,
+                  alignment: Alignment.center,
+                  child: CachedNetworkImage(
+                    height: 160,
+                    width: 160,
+                    imageUrl: item.data.listImages.first,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.image_not_supported_rounded),
                   ),
-                  child: Container(
-                      height: 150,
-                      width: 150,
-                      alignment: Alignment.center,
-                      child: const Icon(Icons.image_not_supported_rounded))),
+                ),
+              ),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(kDefaultPadding),
@@ -197,6 +207,13 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               maxLine: 1,
                             ).semiLarge,
                           ),
+                          const SizedBox(width: kDefaultPadding),
+                          DefText(
+                            dateFormater(
+                              item.data.createdAt,
+                              dateFormat: kDateFormatDateOnly,
+                            ),
+                          ).normal,
                         ],
                       ),
                       const SizedBox(height: kDefaultPadding / 2),

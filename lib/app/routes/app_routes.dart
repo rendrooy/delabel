@@ -22,6 +22,7 @@ abstract class Routes {
   static const SETTINGS_SCREEN = _Paths.SETTINGS_SCREEN;
   static const LIST_NEWS_ADMIN_SCREEN = _Paths.LIST_NEWS_ADMIN_SCREEN;
   static const FORM_NEWS_ADMIN_SCREEN = _Paths.FORM_NEWS_ADMIN_SCREEN;
+  static const DETAIL_NEWS_SCREEN = _Paths.DETAIL_NEWS_SCREEN;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const SETTINGS_SCREEN = '/settings-screen';
   static const LIST_NEWS_ADMIN_SCREEN = '/list-news-admin-screen';
   static const FORM_NEWS_ADMIN_SCREEN = '/form-news-admin-screen';
+  static const DETAIL_NEWS_SCREEN = '/detail-news-screen';
 }

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/DetailNewsScreen/bindings/detail_news_screen_binding.dart';
+import '../modules/DetailNewsScreen/views/detail_news_screen_view.dart';
 import '../modules/FamilyInfoScreen/bindings/family_info_screen_binding.dart';
 import '../modules/FamilyInfoScreen/views/family_info_screen_view.dart';
 import '../modules/FinanceReportScreen/bindings/finance_report_screen_binding.dart';
@@ -134,6 +136,11 @@ class AppPages {
       name: _Paths.FORM_NEWS_ADMIN_SCREEN,
       page: () => const FormNewsAdminScreenView(),
       binding: FormNewsAdminScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_NEWS_SCREEN,
+      page: () => const DetailNewsScreenView(),
+      binding: DetailNewsScreenBinding(),
     ),
   ];
 }

@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 
 import '../../../models/news_model.dart';
 import '../../../services/news_service.dart';
-import '../../../util/func_util.dart';
 
 class ListNewsAdminScreenController extends GetxController {
   //TODO: Implement ListNewsAdminScreenController
@@ -17,7 +16,7 @@ class ListNewsAdminScreenController extends GetxController {
 
   Future getListNews() async {
     List res = await NewsServices().getAllData();
-    logKey(res[0]);
+    // logKey(res[0]);
     listNews.value = res.map((e) => NewsModel.fromJson(e)).toList();
   }
 

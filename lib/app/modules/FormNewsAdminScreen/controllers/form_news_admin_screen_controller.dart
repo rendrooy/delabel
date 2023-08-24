@@ -1,16 +1,16 @@
 import 'dart:io';
 
 import 'package:delabel_v3/app/models/news_model.dart';
+import 'package:delabel_v3/app/util/func_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../services/news_service.dart';
 import '../../../util/firebase_storage.dart';
 
 class FormNewsAdminScreenController extends GetxController {
-  //TODO: Implement FormNewsAdminScreenController
-
   var listImage = <XFile>[].obs;
   final newsModel = Rxn<NewsModel>();
   final formNewsKey = GlobalKey<FormBuilderState>();
@@ -31,24 +31,26 @@ class FormNewsAdminScreenController extends GetxController {
   }
 
   void submitNews() async {
-    if (!formNewsKey.currentState!.validate()) return;
-    // logKey(auth.currentUser!.uid);
-    // // auth.
-    // return;
+    Get.focusScope?.unfocus();
+    if (!formNewsKey.currentState!.saveAndValidate()) return;
+    dialogLoading();
+
     if (newsModel.value != null) {
-      // update
     } else {
       var listUrl = <String>[];
-      // create
       for (var i = 0; i < listImage.length; i++) {
-        var res = await uploadImageToFirebase(File(listImage[i].path));
-        // listUrl.add(res!);
-        // await NewsServices().insertData(value: {
-        //   ...formNewsKey.currentState!.value,
-        //   'list_images': listUrl,
-        //   'isShowed': true
-        // });
+        var res = await uploadImageToFirebase(File(listImage[i].path), 'news');
+        listUrl.add(res!);
       }
+      DataNewsModel dataNewsModel = DataNewsModel.fromJson({
+        ...formNewsKey.currentState!.value,
+        'list_images': listUrl,
+        'isShowed': true,
+        'created_at': DateTime.now(),
+      });
+      await NewsServices().insertData(value: dataNewsModel.toJson());
+      Navigator.of(Get.overlayContext!).pop();
+      Get.back();
     }
   }
 

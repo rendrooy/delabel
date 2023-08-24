@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:delabel_v3/app/config/constants.dart';
 import 'package:delabel_v3/app/routes/app_pages.dart';
 import 'package:delabel_v3/app/services/news_service.dart';
-import 'package:delabel_v3/app/util/func_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -43,8 +42,8 @@ class HomeScreenController extends GetxController {
       "title": "Laporan Keuangan",
     },
     {
-      "icon": Icons.store,
-      "title": "UMKM",
+      "icon": Icons.family_restroom_outlined,
+      "title": "Lapor Tamu",
     },
   ];
 
@@ -59,7 +58,7 @@ class HomeScreenController extends GetxController {
 
   void getListNews() async {
     var res = await NewsServices().getAllData();
-    logKey({"res": res});
+    // logKey({"res": res});
     listNews.value = res.map((e) => NewsModel.fromJson(e)).toList();
   }
 
