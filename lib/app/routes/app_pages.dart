@@ -18,8 +18,6 @@ import '../modules/ListFamilyScreen/bindings/list_family_screen_binding.dart';
 import '../modules/ListFamilyScreen/views/list_family_screen_view.dart';
 import '../modules/ListMemberScreen/bindings/list_member_screen_binding.dart';
 import '../modules/ListMemberScreen/views/list_member_screen_view.dart';
-import '../modules/ListNews/bindings/list_news_binding.dart';
-import '../modules/ListNews/views/list_news_view.dart';
 import '../modules/ListNewsAdminScreen/bindings/list_news_admin_screen_binding.dart';
 import '../modules/ListNewsAdminScreen/views/list_news_admin_screen_view.dart';
 import '../modules/ListNewsScreen/bindings/list_news_screen_binding.dart';
@@ -111,11 +109,6 @@ class AppPages {
       name: _Paths.FORM_FAMILY_SCREEN,
       page: () => const FormFamilyScreenView(),
       binding: FormFamilyScreenBinding(),
-    ),
-    GetPage(
-      name: _Paths.LIST_NEWS,
-      page: () => const ListNewsView(),
-      binding: ListNewsBinding(),
     ),
     GetPage(
       name: _Paths.LIST_NEWS_SCREEN,

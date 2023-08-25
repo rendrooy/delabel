@@ -31,7 +31,10 @@ class ListNewsScreenView extends GetView<ListNewsScreenController> {
                   padding: EdgeInsets.zero,
                   // onLongPress: () {},
                   onPressed: () {
-                    Get.toNamed(Routes.DETAIL_NEWS_SCREEN);
+                    Get.toNamed(
+                      Routes.DETAIL_NEWS_SCREEN,
+                      arguments: controller.listNews.value[i],
+                    );
                   },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

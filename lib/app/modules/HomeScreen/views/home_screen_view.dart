@@ -50,11 +50,8 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               fit: BoxFit.fill,
                               imageUrl: e,
                               placeholder: (context, url) {
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(5),
-                                  child: Image.asset(
-                                    'assets/images/default_picture.jpeg',
-                                  ),
+                                return Center(
+                                  child: loading(),
                                 );
                               },
                             ),
@@ -169,7 +166,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
         child: MaterialButton(
           padding: EdgeInsets.zero,
           onLongPress: () {},
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(Routes.DETAIL_NEWS_SCREEN, arguments: item);
+          },
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

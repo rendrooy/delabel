@@ -6,6 +6,7 @@ import '../../../services/news_service.dart';
 class ListNewsAdminScreenController extends GetxController {
   //TODO: Implement ListNewsAdminScreenController
   var listNews = <NewsModel>[].obs;
+  var listSelectedNews = <NewsModel>[].obs;
 
   final count = 0.obs;
   @override
